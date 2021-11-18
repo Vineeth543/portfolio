@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Portfolio</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <main class='main'>
+      <nav class='navBar'>
+        <h1>Vineeth Portfolio</h1>
+        <div class='navigationMenu'>
+          <a href="#aboutMe">About Me</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contactForm">Let's Connect!</a>
+        <div>
+      </nav>
+      <section class='heroSection'>
+        <img 
+        class='profileImage'
+        src='./images/profile.jpg'/>
+        <div class='herosectionDetails'>
+          <h1>Vineeth</h1>
+          <h3>Full Stack developer, UI/UX Designer.</h3>
+        </div>
+      </section>
+      <section class='aboutMe' id='aboutMe'>
+        <h1>What I Do...</h1>
+        <p>I'm  UI/UX designer based in India. What draws me to UX design is its major role in finding creative and practical solutions to solve the users’ problems and revealing new opportunities for them. I'm not working, I'm probably drawing, binge watching the latest series or taking photos of my cats. My work usually means end-to-end app design. Brainstorming, wireframing, visual design, UI patterns. My illustrations are all over the place. I was told to set on a style, but that's no fun... Shoot me a message below if you'd like to talk art or design.</p>
+      </section>
+      <section class='skillsAndProjects'>
+        <div class='skills' id='skills'>
+          <h1 class='cardHeading'>Skills</h1>
+          <img title='HTML' src='./images/html.svg'>
+          <img title='CSS' src='./images/css.svg'>
+          <img title='Javascript' src='./images/javascript.svg'>
+          <img title='Node.JS' src='./images/node.svg'>
+          <img title='React' src='./images/react.svg'>
+          <img title='MongoDB' src='./images/mongodb.svg'>
+          <img title='Firebase' src='./images/firebase.svg'>
+          <img title='Redux' src='./images/redux.svg'>
+        </div>
+        <div class='projects' id='projects'>
+          <h1 class='cardHeading'>Projects</h1>
+          <div class='projectContainer'>
+            <img src='./images/mad.png'/>
+            <div class='projectDescription'>
+              <h4>WEATHER FORECAST</h4>
+              <p>API Based Android Weather Application.</p>
+            </div>
+          </div>
+          <div class='projectContainer'>
+            <img src='./images/cg.png'/>
+            <div class='projectDescription'>
+              <h4>Google Chrome’s Dinosaur Game</h4>
+              <p>Computer Graphics Based 2D Game.</p>
+            </div>
+          </div>
+          <div class='projectContainer'>
+            <img src='./images/db.png'/>
+            <div class='projectDescription'>
+              <h4>BOOKS WORLD</h4>
+              <p>DBMS Based Second Hand Book Selling Web App.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class='contactForm' id='contactForm'>
+        <h1>Let's Connect!</h2>
+        <div class='formGroup'>
+          <label for='name'>Enter Full Name</label><br/>
+          <input type='text' id='name' placeholder='Full Name'/>
+        </div>
+        <div class='formGroup'>
+          <label for='email'>Email</label><br/>
+          <input type='text' id='email' placeholder='Email'/>
+        </div>
+        <div class='formGroup'>
+          <label for='message'>Message</label><br/>
+          <textarea placeholder="Send some message!" id="message" name="w3review" rows="4" cols="50"></textarea>
+        </div>
+        <button class='submitButton' onClick={submit()}>Connect</button>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
