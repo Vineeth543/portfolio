@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Garuda — case study · Vineeth Serigar</title>
+    <meta
+      name="description"
+      content="A real-time Indian stock market analytics platform. ~1,500 binary WebSocket packets/sec, sub-second tick-to-screen, €4/month total infra. Built solo."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="case-study.css" />
+  </head>
+  <body data-theme="dark">
+    <div class="page">
+      <!-- Topbar -->
+      <div class="topbar">
+        <span class="dot"></span>
+        <span class="path">
+          ~<span class="sep">/</span>vineeth<span class="sep">/</span
+          >portfolio<span class="sep">/</span>case-studies<span class="sep"
+            >/</span
+          >garuda.md
+        </span>
+        <nav class="nav">
+          <a href="index.html#work"><span class="hash">#</span>work</a>
+          <a href="index.html#projects"><span class="hash">#</span>projects</a>
+          <a href="index.html#skills"><span class="hash">#</span>skills</a>
+          <a href="index.html#contact"><span class="hash">#</span>contact</a>
+        </nav>
+      </div>
+
+      <!-- Hero -->
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link mono" href="index.html">← back to portfolio</a>
+          <div class="case-meta">
+            <div>
+              <span class="k mono">project</span
+              ><span class="v">Personal · Solo build</span>
+            </div>
+            <div>
+              <span class="k mono">period</span
+              ><span class="v">2025 — present</span>
+            </div>
+            <div>
+              <span class="k mono">role</span
+              ><span class="v">Sole engineer · DB → pixel</span>
+            </div>
+            <div>
+              <span class="k mono">stack</span
+              ><span class="v">Angular 21 · Bun · TimescaleDB · Electron</span>
+            </div>
+          </div>
+
+          <h1 class="case-title">
+            Garuda — a real-time<br /><span class="em"
+              >market data platform</span
+            >
+            on €4/month.
+          </h1>
+          <p class="case-sub">
+            1,500 raw binary WebSocket packets per second. 50 symbols.
+            Sub-second tick-to-screen. One
+            <strong style="color: var(--text)">Bun monolith</strong>, one
+            TimescaleDB, one Caddy proxy. No Redis. No message queue. No worker
+            threads. Built end-to-end, alone — from binary protocol decoding to
+            TradingView chart integration.
+          </p>
+
+          <div class="case-stats">
+            <div class="s">
+              <div class="n"><span class="accent">&lt;1</span>s</div>
+              <div class="l">Tick → screen</div>
+            </div>
+            <div class="s">
+              <div class="n"><span class="accent">1,500</span>/s</div>
+              <div class="l">Binary packets</div>
+            </div>
+            <div class="s">
+              <div class="n"><span class="accent">€4</span>/mo</div>
+              <div class="l">Total infra</div>
+            </div>
+            <div class="s">
+              <div class="n"><span class="accent">9</span> MB</div>
+              <div class="l">Ring buffer · 50 sym</div>
+            </div>
+            <div class="s">
+              <div class="n"><span class="accent">0</span></div>
+              <div class="l">Ticks lost on DB fail</div>
+            </div>
+          </div>
+
+          <div class="case-cta">
+            <a
+              class="btn primary"
+              href="https://drive.google.com/file/d/1MfwZhTAIqA1SVY4Nza5lNRGeS-XmRd3Y"
+              target="_blank"
+              rel="noopener"
+            >
+              <span>watch the 2-min demo</span><span class="arrow">→</span>
+            </a>
+            <a class="btn" href="index.html#contact">
+              <span>talk to me about Garuda</span
+              ><span style="opacity: 0.6">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live demo -->
+      <section>
+        <div class="shell">
+          <div class="section-label">
+            <span class="num">/</span>
+            <span>Live (simulated) feed</span>
+            <span class="file mono">stream.ws</span>
+          </div>
+          <h2 class="section-title">What the screen actually shows.</h2>
+          <p class="section-sub">
+            A simulated rendering of Garuda's live data path: a top-5 order book
+            on the left, a 240ms tick log on the right. The real system pushes
+            these from a binary WebSocket through a custom decoder → ring buffer
+            → RxJS stream → TradingView datafeed in under a second.
+          </p>
+          <div id="live-demo-root"></div>
+        </div>
+      </section>
+
+      <!-- Architecture -->
+      <section>
+        <div class="shell">
+          <div class="section-label">
+            <span class="num">/</span>
+            <span>System Architecture</span>
+            <span class="file mono">arch.dot</span>
+          </div>
+          <h2 class="section-title">One Bun monolith. No moving parts.</h2>
+          <p class="section-sub">
+            The whole pipeline — ingest, decode, signal, store, fan-out — runs
+            inside a single Fastify v5 process on a Hetzner CX22. Below is the
+            actual data flow.
+          </p>
+
+          <div class="arch">
+            <div class="arch-row">
+              <div class="arch-layer">
+                <div class="label">Ingest</div>
+                <div class="nodes">
+                  <div class="arch-node">
+                    <div class="badge">332B/pkt</div>
+                    <div class="title">NSE Depth WS</div>
+                    <div class="desc">
+                      Top-5 order book snapshots, 1-2 Hz per symbol
+                    </div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="badge">163B/pkt</div>
+                    <div class="title">NSE Feed WS</div>
+                    <div class="desc">Trade prints, LTP, volume</div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="badge">163B/pkt</div>
+                    <div class="title">MCX Feed WS</div>
+                    <div class="desc">Commodities feed (same wire format)</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="arch-arrow">↓</div>
+
+              <div class="arch-layer">
+                <div class="label">Decode</div>
+                <div class="nodes">
+                  <div class="arch-node accent">
+                    <div class="title">DataView decoders</div>
+                    <div class="desc">
+                      Pure TS. No allocations per packet. Switch on packet type,
+                      slice offsets, emit typed events.
+                    </div>
+                  </div>
+                  <div class="arch-node accent">
+                    <div class="title">Demand/Supply engine</div>
+                    <div class="desc">
+                      Per-second aggressiveBuy% / sell% from top-5
+                      consumption-delta + trade-side classification.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="arch-arrow">↓</div>
+
+              <div class="arch-layer">
+                <div class="label">In-memory</div>
+                <div class="nodes">
+                  <div class="arch-node">
+                    <div class="badge">~9 MB total</div>
+                    <div class="title">Ring buffer</div>
+                    <div class="desc">
+                      Float64Array(3600) per symbol. 1-hour rolling window.
+                      Sub-ms reads.
+                    </div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="badge">5 resolutions</div>
+                    <div class="title">Rolling avg cache</div>
+                    <div class="desc">
+                      1s · 1m · 5m · 15m · 1h. Computed from ring; never hits DB
+                      on live frame.
+                    </div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="badge">1 Hz</div>
+                    <div class="title">Flush scheduler</div>
+                    <div class="desc">
+                      Global interval, batches all symbols into one DB
+                      transaction.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="arch-arrow">↓</div>
+
+              <div class="arch-layer">
+                <div class="label">Persist</div>
+                <div class="nodes">
+                  <div class="arch-node">
+                    <div class="badge">hypertable</div>
+                    <div class="title">TimescaleDB</div>
+                    <div class="desc">
+                      ON CONFLICT DO NOTHING bulk inserts. time_bucket() on
+                      read.
+                    </div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="badge">3-strike WAL</div>
+                    <div class="title">JSON fallback</div>
+                    <div class="desc">
+                      Failed flushes dump to
+                      ./wal/&lt;stream&gt;-&lt;ts&gt;.json. Replayable. Zero
+                      ticks lost.
+                    </div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="badge">pg_trgm GIN</div>
+                    <div class="title">Symbol search</div>
+                    <div class="desc">
+                      100K-row global_symbols, &lt;20ms ILIKE+similarity
+                      ranking.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="arch-arrow">↓</div>
+
+              <div class="arch-layer">
+                <div class="label">Serve</div>
+                <div class="nodes">
+                  <div class="arch-node accent">
+                    <div class="title">Fastify v5 WS</div>
+                    <div class="desc">
+                      Stateless reconnect. Re-runs time_bucket on every
+                      subscribe frame.
+                    </div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="title">Caddy auto-TLS</div>
+                    <div class="desc">
+                      6-line reverse proxy. Transparent WS upgrade pass-through.
+                    </div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="title">Auth gate</div>
+                    <div class="desc">
+                      Argon2id + Ed25519 JWT + OTP + refresh-blocklist.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="arch-arrow">↓</div>
+
+              <div class="arch-layer">
+                <div class="label">Client</div>
+                <div class="nodes">
+                  <div class="arch-node accent">
+                    <div class="title">Angular 21 + RxJS</div>
+                    <div class="desc">
+                      webSocket() with retry. Merges history + live by
+                      time-bucket key.
+                    </div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="title">TradingView Charts</div>
+                    <div class="desc">
+                      Custom datafeed adapter. Live tick rendering.
+                    </div>
+                  </div>
+                  <div class="arch-node">
+                    <div class="title">Electron</div>
+                    <div class="desc">Cross-platform .exe desktop client.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chapter 1: latency -->
+      <section>
+        <div class="shell">
+          <div class="section-label">
+            <span class="num">/</span>
+            <span>The hard parts</span>
+            <span class="file mono">notes.md</span>
+          </div>
+          <h2 class="section-title">Where I had to invent something.</h2>
+          <p class="section-sub">
+            Four problems that didn't have a clean library answer. How I solved
+            each.
+          </p>
+
+          <div class="chapter" style="margin-top: 48px">
+            <aside class="chapter-side">
+              <div class="num">01</div>
+              <div class="name">Binary protocols</div>
+              <div style="margin-top: 8px; color: var(--text-faint)">
+                decode.ts
+              </div>
+            </aside>
+            <div class="chapter-body">
+              <h3>
+                Decoding 1,500 binary packets/sec without allocating garbage.
+              </h3>
+              <p>
+                DhanHQ's WebSocket sends three packet shapes —
+                <code>NSE depth (332B)</code>, <code>NSE feed (163B)</code>,
+                <code>MCX feed (163B)</code>. Most JS libraries on top of these
+                allocate a fresh object per packet. At 1,500 packets/sec, that's
+                a GC pause every few seconds.
+              </p>
+              <p>
+                I wrote pure-TypeScript <strong>DataView</strong> decoders that
+                read offsets directly and emit into pre-allocated typed events.
+                No <code>new</code> per packet. No JSON.parse. The decoder
+                routes by the first byte and slices fields straight into the
+                demand/supply engine.
+              </p>
+              <div class="callout">
+                <span class="label">Outcome</span>
+                Steady-state &lt;20% CPU on one core, &lt;500 MB RAM for the
+                entire monolith. Zero GC-related latency spikes.
+              </div>
+            </div>
+          </div>
+
+          <div class="chapter" style="margin-top: 64px">
+            <aside class="chapter-side">
+              <div class="num">02</div>
+              <div class="name">Ring buffer</div>
+              <div style="margin-top: 8px; color: var(--text-faint)">
+                ring.ts
+              </div>
+            </aside>
+            <div class="chapter-body">
+              <h3>
+                A 9 MB in-memory window across 50 symbols and 5 resolutions.
+              </h3>
+              <p>
+                The proprietary metric — <strong>Aggressive Demand %</strong> —
+                is a 1-hour rolling average across five resolutions (1s · 1m ·
+                5m · 15m · 1h). Reading these from the DB on every live frame is
+                a non-starter.
+              </p>
+              <p>
+                I keep one <code>Float64Array(3600)</code> per symbol and write
+                to it as a circular ring. Reads at all five resolutions are
+                derived from the same ring with one pass and a few accumulators.
+                Total memory across 50 symbols: <strong>~9 MB</strong>. Reads:
+                sub-millisecond. The DB is only touched on the 1-Hz batch flush.
+              </p>
+              <div class="code-block">
+                <span class="comment">// ring.ts — illustrative shape</span>
+                <span class="keyword">class</span>
+                <span class="fn">SymbolRing</span> { buf =
+                <span class="keyword">new</span> Float64Array(<span class="num"
+                  >3600</span
+                >); <span class="comment">// 1-hour window</span> head =
+                <span class="num">0</span>; <span class="fn">push</span>(v:
+                number) { <span class="keyword">this</span>.buf[<span
+                  class="keyword"
+                  >this</span
+                >.head] = v; <span class="keyword">this</span>.head = (<span
+                  class="keyword"
+                  >this</span
+                >.head + <span class="num">1</span>) %
+                <span class="num">3600</span>; }
+                <span class="fn">avgOver</span>(secs: number): number {
+                <span class="comment">/* O(secs), sub-ms */</span> } }
+              </div>
+            </div>
+          </div>
+
+          <div class="chapter" style="margin-top: 64px">
+            <aside class="chapter-side">
+              <div class="num">03</div>
+              <div class="name">Reconnects</div>
+              <div style="margin-top: 8px; color: var(--text-faint)">
+                stream.ts
+              </div>
+            </aside>
+            <div class="chapter-body">
+              <h3>
+                Stateless reconnects that don't leave visible gaps in the chart.
+              </h3>
+              <p>
+                The Angular client subscribes via <code>webSocket()</code> with
+                automatic retry. On every subscribe frame the server re-runs the
+                full <code>time_bucket</code> query, so history and live always
+                merge cleanly by overlapping bucket key. No server-side
+                per-client state. No replay log to keep in sync.
+              </p>
+              <div class="callout">
+                <span class="label">Outcome</span>
+                Refresh the browser mid-session. Drop the network. Plug back in.
+                The TradingView chart stitches itself back together with no
+                visible gap.
+              </div>
+            </div>
+          </div>
+
+          <div class="chapter" style="margin-top: 64px">
+            <aside class="chapter-side">
+              <div class="num">04</div>
+              <div class="name">Survival</div>
+              <div style="margin-top: 8px; color: var(--text-faint)">
+                wal.ts
+              </div>
+            </aside>
+            <div class="chapter-body">
+              <h3>Zero data loss when Postgres briefly disappears.</h3>
+              <p>
+                A 3-strike WAL fallback dumps any failed flush buffer to
+                <code>./wal/&lt;stream&gt;-&lt;ts&gt;.json</code>. The ring
+                buffer keeps accepting live ticks from DhanHQ while the DB
+                recovers — so live continuity is unaffected and historical data
+                is recoverable on the next successful flush.
+              </p>
+              <p>
+                Auth is the same shape of paranoia:
+                <strong>Argon2id</strong> password hashing,
+                <strong>Ed25519 JWT</strong> (15-min access + same-day-capped
+                refresh), OTP-to-admin gate, <strong>HttpOnly</strong> refresh
+                cookies, and an in-memory <code>refreshBlocklist</code> that
+                invalidates all sessions on replay-attack detection.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cost -->
+      <section>
+        <div class="shell">
+          <div class="section-label">
+            <span class="num">/</span>
+            <span>The receipt</span>
+            <span class="file mono">cost.md</span>
+          </div>
+          <h2 class="section-title">€4/month, every month.</h2>
+          <p class="section-sub">
+            Hetzner CX22 (2 vCPU, 4 GB RAM). One Bun process. One Postgres. One
+            Caddy. No Redis, no queue, no workers. Steady-state &lt;20% CPU on
+            one core. &lt;500 MB RAM. ~250 concurrent WebSocket connections.
+          </p>
+          <div class="case-stats">
+            <div class="s">
+              <div class="n">2 <span class="accent">vCPU</span></div>
+              <div class="l">Hetzner CX22</div>
+            </div>
+            <div class="s">
+              <div class="n">4 <span class="accent">GB</span></div>
+              <div class="l">RAM</div>
+            </div>
+            <div class="s">
+              <div class="n">&lt;20<span class="accent">%</span></div>
+              <div class="l">Steady CPU · 1 core</div>
+            </div>
+            <div class="s">
+              <div class="n">&lt;500<span class="accent">MB</span></div>
+              <div class="l">RSS</div>
+            </div>
+            <div class="s">
+              <div class="n">~250</div>
+              <div class="l">Concurrent WS</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section>
+        <div class="shell" style="text-align: center; padding-bottom: 32px">
+          <h2 class="section-title" style="font-size: clamp(32px, 5vw, 56px)">
+            Want the walkthrough?
+          </h2>
+          <p class="section-sub" style="margin-left: auto; margin-right: auto">
+            The 2-minute demo video shows tick-to-screen in real conditions. Or
+            just email me — happy to share more architecture diagrams, code
+            samples, or talk through tradeoffs.
+          </p>
+          <div class="case-cta" style="justify-content: center">
+            <a
+              class="btn primary"
+              href="https://drive.google.com/file/d/1MfwZhTAIqA1SVY4Nza5lNRGeS-XmRd3Y"
+              target="_blank"
+              rel="noopener"
+            >
+              <span>watch demo</span><span class="arrow">→</span>
+            </a>
+            <a class="btn" href="mailto:vineethserigar17@gmail.com">
+              <span>email vineeth</span><span class="arrow">→</span>
+            </a>
+            <a class="btn" href="index.html">
+              <span>back to portfolio</span><span style="opacity: 0.6">↩</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>
+          <span class="pulse"></span>
+          <span>garuda case study · v1.0</span>
+        </div>
+        <div>
+          <span class="faint">© 2026 Vineeth Serigar</span>
+        </div>
+      </footer>
+    </div>
+
+    <!-- React + Babel -->
+    <script
+      src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+      integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+      integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+      integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/babel" src="src/garuda-live.jsx"></script>
+  </body>
+</html>
