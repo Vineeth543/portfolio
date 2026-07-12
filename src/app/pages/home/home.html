@@ -1,0 +1,398 @@
+<section
+  class="relative flex min-h-dvh flex-col justify-center overflow-hidden bg-bg px-[clamp(24px,6vw,80px)] py-35"
+>
+  <div
+    class="pointer-events-none absolute inset-0 animate-[gridDrift_20s_linear_infinite] opacity-60 [background-image:linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] [background-size:56px_56px]"
+  ></div>
+  <div
+    class="pointer-events-none absolute -top-[12%] -right-[10%] h-[50vw] max-h-[640px] w-[50vw] max-w-[640px] animate-[floatGlowA_15s_ease-in-out_infinite] rounded-full bg-accent opacity-[0.16] blur-[120px]"
+  ></div>
+  <div
+    class="pointer-events-none absolute -bottom-[12%] -left-[10%] h-[42vw] max-h-[560px] w-[42vw] max-w-[560px] animate-[floatGlowB_17s_ease-in-out_infinite] rounded-full bg-accent-blue opacity-[0.14] blur-[120px]"
+  ></div>
+
+  <div
+    class="relative z-2 mx-auto flex w-full max-w-[1280px] flex-wrap items-center justify-center gap-10"
+  >
+    <div class="relative z-2 min-w-0 flex-[1_1_420px]">
+      <div class="mb-5.5 flex items-center gap-2.5">
+        <span
+          class="h-2 w-2 flex-none rounded-full bg-success shadow-[0_0_0_4px_rgba(51,209,122,0.18)]"
+        ></span>
+        <span
+          class="font-mono text-xs font-semibold tracking-[0.14em] text-text-secondary uppercase"
+        >
+          Bengaluru, India — Open to opportunities
+        </span>
+      </div>
+
+      <h1
+        class="m-0 font-display text-[clamp(52px,8vw,124px)] leading-[0.98] font-bold tracking-[-0.03em] text-text"
+      >
+        Vineeth<br />Serigar
+      </h1>
+
+      <div class="mt-6.5 min-h-[1.4em] text-[clamp(17px,2vw,26px)] font-medium text-text-secondary">
+        <span class="font-mono text-accent">&gt;</span>
+        {{ typedText()
+        }}<span class="animate-[blinkCursor_1s_step-start_infinite] text-accent">|</span>
+      </div>
+
+      <div class="mt-7 flex flex-wrap gap-2.5">
+        @for (badge of heroBadges; track badge.label) {
+          <app-skill-badge [badge]="badge" />
+        }
+      </div>
+
+      <div class="mt-9 flex flex-wrap gap-3.5">
+        <a
+          routerLink="/work"
+          class="rounded-pill bg-text px-8 py-4.25 font-sans text-[15px] font-bold text-bg no-underline transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+          >View My Work</a
+        >
+        <a
+          routerLink="/garuda"
+          class="rounded-pill border border-border px-8 py-4.25 font-sans text-[15px] font-bold text-text no-underline transition-colors hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+          >Explore Garuda →</a
+        >
+      </div>
+    </div>
+
+    <div
+      class="relative z-2 flex min-w-0 max-w-[440px] flex-[1_1_340px] items-center justify-center py-2"
+    >
+      <div
+        class="pointer-events-none absolute top-1/2 left-1/2 aspect-square w-[min(500px,88vw)] animate-[heroRingSpin_50s_linear_infinite] rounded-full border border-dashed border-border-strong opacity-50"
+      ></div>
+      <div
+        class="pointer-events-none absolute top-[56%] left-1/2 aspect-square w-[min(440px,86vw)] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.34] blur-[70px] [background:radial-gradient(circle,var(--color-accent)_0%,var(--color-accent-blue)_55%,transparent_78%)]"
+      ></div>
+
+      <div
+        (mousemove)="onPhotoMouseMove($event)"
+        (mouseleave)="onPhotoMouseLeave()"
+        [style.transform]="photoTransform()"
+        class="relative w-[min(400px,80vw)] aspect-[3/4] animate-[portraitDrift_7s_ease-in-out_infinite] transition-transform duration-200 ease-out will-change-transform"
+      >
+        <img
+          src="/assets/profile-vineeth.png"
+          alt=""
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0 h-full w-full animate-[contourGlowA_5s_ease-in-out_infinite] object-contain [filter:drop-shadow(0_0_4px_var(--color-accent))_drop-shadow(0_0_20px_var(--color-accent))_drop-shadow(0_0_42px_var(--color-accent-blue))]"
+        />
+        <img
+          src="/assets/profile-vineeth.png"
+          alt=""
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0 h-full w-full animate-[contourGlowB_5s_ease-in-out_1.4s_infinite] object-contain [filter:drop-shadow(0_0_3px_var(--color-accent-blue))_drop-shadow(0_0_12px_var(--color-accent-blue))]"
+        />
+        <img
+          src="/assets/profile-vineeth.png"
+          alt="Vineeth Serigar"
+          class="relative block h-full w-full object-contain [filter:drop-shadow(0_26px_30px_rgba(0,0,0,0.4))]"
+        />
+
+        <div
+          class="absolute top-[8%] left-[clamp(-14px,-4%,-8px)] flex items-center gap-2 rounded-pill border border-border bg-surface px-4.5 py-2.75 shadow-float backdrop-blur-xl"
+        >
+          <span
+            class="h-1.75 w-1.75 flex-none rounded-full bg-success shadow-[0_0_0_3px_rgba(51,209,122,0.18)]"
+          ></span>
+          <span
+            class="font-mono text-[11.5px] font-semibold tracking-[0.05em] whitespace-nowrap text-text-secondary uppercase"
+            >Available now</span
+          >
+        </div>
+
+        <div
+          class="absolute right-[clamp(-16px,-4%,-8px)] bottom-[6%] rounded-card-sm border border-border bg-surface px-5 py-3.5 shadow-[0_16px_36px_rgba(0,0,0,0.32)] backdrop-blur-xl"
+        >
+          <div class="font-display text-[26px] leading-none font-bold text-text">4+</div>
+          <div
+            class="mt-0.5 font-sans text-[10.5px] font-medium whitespace-nowrap text-text-secondary"
+          >
+            Years Experience
+          </div>
+        </div>
+
+        <div
+          class="absolute top-[42%] right-[clamp(-18px,-5%,-10px)] -translate-y-1/2 rounded-pill border border-border bg-surface px-4 py-2.25 shadow-[0_12px_28px_rgba(0,0,0,0.28)] backdrop-blur-xl"
+        >
+          <span class="font-mono text-[12.5px] font-bold whitespace-nowrap text-accent"
+            >Angular</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-7 left-1/2 z-2 flex -translate-x-1/2 flex-col items-center gap-2">
+    <div class="h-8 w-px bg-border"></div>
+    <span class="font-mono text-[10px] font-medium tracking-[0.12em] text-text-tertiary uppercase"
+      >Scroll</span
+    >
+  </div>
+</section>
+
+<section
+  appScrollReveal
+  class="border-t border-b border-border bg-bg px-[clamp(24px,6vw,80px)] py-14"
+>
+  <div class="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-8">
+    <div
+      class="flex-none font-mono text-[11px] font-semibold tracking-[0.1em] text-text-tertiary uppercase"
+    >
+      Live Engineering Snapshot — Garuda
+    </div>
+    <div class="flex flex-wrap gap-[clamp(28px,5vw,56px)]">
+      @for (stat of stats; track stat.label) {
+        <app-stat-counter [stat]="stat" [active]="statsActive()" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="bg-bg px-[clamp(24px,6vw,80px)] py-27.5">
+  <div appScrollReveal class="mx-auto flex max-w-[1200px] flex-wrap items-start gap-14">
+    <div class="min-w-0 flex-[1_1_460px]">
+      <div class="mb-4 font-mono text-xs font-semibold tracking-[0.14em] text-accent uppercase">
+        About Me
+      </div>
+      <h2
+        class="m-0 mb-5.5 font-display text-[clamp(30px,4vw,52px)] leading-[1.08] font-bold tracking-[-0.02em] text-text"
+      >
+        Frontend specialist.<br />Systems thinker.
+      </h2>
+      <p
+        class="m-0 mb-6.5 max-w-[560px] font-sans text-[clamp(15px,1.6vw,18px)] leading-[1.7] text-text-secondary"
+      >
+        I'm a Bengaluru-based software engineer with about four years of experience building
+        enterprise-grade web applications. My core is Angular, TypeScript, RxJS and NgRx — and I
+        extend that into full-stack territory with Node.js, Bun, Fastify and PostgreSQL. I care
+        about the details users never see but always feel: sub-second search, gap-free real-time
+        charts, and architecture that scales.
+      </p>
+      <a
+        routerLink="/about"
+        class="inline-flex items-center gap-2 font-sans text-[15px] font-bold text-accent no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >Read my full story →</a
+      >
+    </div>
+    <div
+      class="min-w-0 max-w-[380px] flex-[1_1_300px] rounded-card border border-border bg-surface p-9"
+    >
+      <div class="mb-2 font-display text-[60px] leading-none font-semibold text-accent opacity-50">
+        "
+      </div>
+      <p
+        class="m-0 mb-4.5 font-display text-[clamp(19px,2.2vw,24px)] leading-[1.4] font-semibold text-text"
+      >
+        Performance is a feature, not an extra.
+      </p>
+      <div class="font-sans text-[13px] font-medium text-text-tertiary">
+        — My engineering philosophy
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-bg-alt px-[clamp(24px,6vw,80px)] py-27.5">
+  <div appScrollReveal class="mx-auto max-w-[1200px]">
+    <div class="mb-4 font-mono text-xs font-semibold tracking-[0.14em] text-accent uppercase">
+      Technical Expertise
+    </div>
+    <h2
+      class="m-0 mb-10 max-w-[700px] font-display text-[clamp(30px,4vw,52px)] leading-[1.08] font-bold tracking-[-0.02em] text-text"
+    >
+      Angular-first. Full-stack capable.
+    </h2>
+
+    <div
+      class="relative overflow-hidden rounded-card bg-[linear-gradient(135deg,var(--color-accent),#B8281C)] p-8"
+    >
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <div class="mb-2.5 flex items-center gap-3">
+            <span class="font-display text-[30px] font-bold text-white">Angular</span>
+            <span
+              class="rounded-pill bg-white/20 px-3 py-1.25 font-mono text-[11px] font-semibold tracking-[0.06em] text-white uppercase"
+              >Primary Framework</span
+            >
+          </div>
+          <p class="m-0 max-w-[520px] font-sans text-[15px] leading-[1.6] text-white/88">
+            Four years architecting enterprise SPAs — lazy-loaded modules, multi-domain NgRx state,
+            and RxJS-driven reactivity at scale.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5.5 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
+      @for (category of techCategories; track category.title) {
+        <app-tech-stack-card [category]="category" />
+      }
+    </div>
+
+    <div class="mt-5.5 font-sans text-sm font-medium text-text-tertiary">
+      Also comfortable in React — from an academic capstone and early internship projects.
+    </div>
+  </div>
+</section>
+
+<section class="bg-bg px-[clamp(24px,6vw,80px)] py-27.5">
+  <div class="mx-auto max-w-[1200px]">
+    <div appScrollReveal class="mb-10 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <div class="mb-4 font-mono text-xs font-semibold tracking-[0.14em] text-accent uppercase">
+          Featured Work
+        </div>
+        <h2
+          class="m-0 font-display text-[clamp(30px,4vw,52px)] leading-[1.08] font-bold tracking-[-0.02em] text-text"
+        >
+          Projects that ship, scale, and perform.
+        </h2>
+      </div>
+      <a
+        routerLink="/work"
+        class="font-sans text-[15px] font-bold whitespace-nowrap text-accent no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >View All Work →</a
+      >
+    </div>
+
+    <a
+      appScrollReveal
+      routerLink="/garuda"
+      class="relative block overflow-hidden rounded-[28px] border border-border-strong bg-linear-135 from-featured-card-from to-featured-card-to p-10 no-underline transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+    >
+      <div class="pointer-events-none absolute right-0 bottom-0 h-[65%] w-[70%] opacity-50">
+        <svg viewBox="0 0 400 120" class="block h-full w-full" preserveAspectRatio="none">
+          <polyline
+            points="0,90 30,70 60,85 90,50 120,62 150,30 180,45 210,20 240,38 270,15 300,32 330,10 360,26 400,8"
+            fill="none"
+            stroke-width="2.5"
+            stroke-dasharray="900"
+            class="stroke-accent-blue"
+            [attr.style]="
+              'opacity:0.85;stroke-dashoffset:' +
+              garudaDash() +
+              ';transition:stroke-dashoffset 2.4s cubic-bezier(.16,1,.3,1)'
+            "
+          ></polyline>
+        </svg>
+      </div>
+      <div class="relative z-2">
+        <div class="mb-3.5 flex flex-wrap items-center gap-3">
+          <span class="font-display text-[32px] font-bold text-featured-ink">Garuda</span>
+          <span
+            class="rounded-pill bg-featured-ink/16 px-3 py-1.25 font-mono text-[11px] font-semibold tracking-[0.05em] text-featured-ink uppercase"
+            >Flagship · Solo Project</span
+          >
+        </div>
+        <div class="mb-3.5 font-sans text-base font-semibold text-featured-ink/92">
+          Real-Time Indian Stock Market Analytics Platform
+        </div>
+        <p
+          class="m-0 mb-5.5 max-w-[600px] font-sans text-[15px] leading-[1.65] text-featured-ink/72"
+        >
+          A cross-platform desktop app that ingests live NSE &amp; MCX tick data, decodes ~1,500
+          binary packets a second in pure TypeScript, and renders gap-free charts — architected,
+          built, and operated solo.
+        </p>
+        <div class="mb-5.5 flex flex-wrap gap-2">
+          @for (tag of ['Angular 21', 'Electron', 'Bun + Fastify', 'TimescaleDB']; track tag) {
+            <span
+              class="rounded-pill bg-featured-ink/10 px-3.5 py-1.75 font-mono text-xs font-medium text-featured-ink/85"
+              >{{ tag }}</span
+            >
+          }
+        </div>
+        <div class="flex items-center gap-2 font-sans text-sm font-bold text-featured-ink">
+          View Case Study <span class="text-base">→</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="mt-5 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-5">
+      @for (project of secondaryProjects; track project.title) {
+        <app-project-card appScrollReveal [project]="project" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="bg-bg-alt px-[clamp(24px,6vw,80px)] py-27.5">
+  <div appScrollReveal class="mx-auto max-w-[1200px]">
+    <div class="mb-4 font-mono text-xs font-semibold tracking-[0.14em] text-accent uppercase">
+      Career Snapshot
+    </div>
+    <h2
+      class="m-0 mb-11 max-w-[760px] font-display text-[clamp(30px,4vw,52px)] leading-[1.08] font-bold tracking-[-0.02em] text-text"
+    >
+      Four years. Two enterprise products. One flagship of my own.
+    </h2>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-0 border-t border-border">
+      @for (node of careerNodes; track node.year) {
+        <app-career-timeline-node [node]="node" />
+      }
+    </div>
+    <a
+      routerLink="/experience"
+      class="mt-9 inline-flex items-center gap-2 font-sans text-[15px] font-bold text-accent no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+      >Full experience &amp; timeline →</a
+    >
+  </div>
+</section>
+
+<section class="bg-bg px-[clamp(24px,6vw,80px)] py-27.5">
+  <div appScrollReveal class="mx-auto max-w-[1200px] text-center">
+    <div class="mb-4 font-mono text-xs font-semibold tracking-[0.14em] text-accent uppercase">
+      Testimonials
+    </div>
+    <h2
+      class="m-0 mb-3.5 font-display text-[clamp(28px,3.6vw,44px)] leading-[1.1] font-bold tracking-[-0.02em] text-text"
+    >
+      Building a track record.
+    </h2>
+    <p class="mx-auto mb-11 max-w-[520px] font-sans text-[15px] leading-[1.6] text-text-secondary">
+      I'm early in collecting formal testimonials — check back soon, or hear directly from my
+      collaborators by reaching out.
+    </p>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
+      @for (placeholder of testimonialPlaceholders; track placeholder.secondaryBarWidth) {
+        <app-testimonial-placeholder [data]="placeholder" />
+      }
+    </div>
+  </div>
+</section>
+
+<section
+  appScrollReveal
+  class="relative overflow-hidden bg-bg-alt px-[clamp(24px,6vw,80px)] py-32.5"
+>
+  <div
+    class="pointer-events-none absolute top-1/2 left-1/2 h-[60vw] max-h-[800px] w-[60vw] max-w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent opacity-10 blur-[160px]"
+  ></div>
+  <div class="relative z-2 mx-auto max-w-[760px] text-center">
+    <h2
+      class="m-0 mb-4.5 font-display text-[clamp(32px,5vw,64px)] leading-[1.06] font-bold tracking-[-0.02em] text-text"
+    >
+      Let's build something exceptional.
+    </h2>
+    <p class="m-0 mb-9 font-sans text-[clamp(15px,1.6vw,19px)] leading-[1.6] text-text-secondary">
+      Open to Angular, Frontend, and Full-Stack roles — Bengaluru or Remote.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3.5">
+      <a
+        routerLink="/contact"
+        class="rounded-pill bg-text px-9 py-4.5 font-sans text-[15px] font-bold text-bg no-underline transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >Get in Touch</a
+      >
+      <a
+        routerLink="/garuda"
+        class="rounded-pill border border-border px-9 py-4.5 font-sans text-[15px] font-bold text-text no-underline transition-colors hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >Explore Garuda</a
+      >
+    </div>
+  </div>
+</section>

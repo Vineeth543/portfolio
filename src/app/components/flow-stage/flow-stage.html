@@ -1,0 +1,14 @@
+<div
+  [class]="
+    'flex flex-[1_1_150px] min-w-[130px] max-w-[180px] flex-col justify-center rounded-icon border px-4 py-5 text-center ' +
+    boxClasses()
+  "
+>
+  <div [class]="'mb-1 font-display text-[13px] font-bold ' + titleColorClass()">
+    {{ stage().title }}
+  </div>
+  <div class="font-mono text-[10.5px] font-medium text-text-tertiary">{{ stage().sub }}</div>
+</div>
+@if (!last()) {
+  <div class="flex flex-none items-center font-sans text-xl text-text-tertiary">→</div>
+}

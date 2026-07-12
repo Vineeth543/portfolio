@@ -1,0 +1,119 @@
+<section class="relative overflow-hidden bg-bg px-[clamp(24px,6vw,80px)] pt-40 pb-17.5">
+  <div
+    class="pointer-events-none absolute inset-0 animate-[gridDrift_20s_linear_infinite] opacity-50 [background-image:linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] [background-size:56px_56px]"
+  ></div>
+  <div
+    class="pointer-events-none absolute -top-[16%] -right-[8%] h-[44vw] max-h-[600px] w-[44vw] max-w-[600px] animate-[floatGlowA_16s_ease-in-out_infinite] rounded-full bg-accent opacity-[0.14] blur-[130px]"
+  ></div>
+  <div class="relative z-2 mx-auto max-w-[1200px]">
+    <div class="mb-4 font-mono text-xs font-semibold tracking-[0.14em] text-accent uppercase">
+      Selected Work
+    </div>
+    <h1
+      class="m-0 mb-5.5 font-display text-[clamp(38px,5.5vw,72px)] leading-[1.05] font-bold tracking-[-0.02em] text-text"
+    >
+      Projects that ship,<br />scale, and perform.
+    </h1>
+    <p
+      class="m-0 max-w-[620px] font-sans text-[clamp(15px,1.6vw,18px)] leading-[1.7] text-text-secondary"
+    >
+      A flagship solo platform, two enterprise B2B products built with a team, and the full-stack
+      capstone that started it all.
+    </p>
+  </div>
+</section>
+
+<section class="bg-bg px-[clamp(24px,6vw,80px)] pt-7.5 pb-10">
+  <a
+    appScrollReveal
+    routerLink="/garuda"
+    class="relative mx-auto block max-w-[1200px] overflow-hidden rounded-[28px] border border-border-strong bg-linear-135 from-featured-card-from to-featured-card-to p-12 no-underline transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+  >
+    <div class="pointer-events-none absolute right-0 bottom-0 h-[70%] w-[65%] opacity-50">
+      <svg viewBox="0 0 400 140" class="block h-full w-full" preserveAspectRatio="none">
+        <polyline
+          points="0,110 30,90 60,100 90,60 120,75 150,40 180,55 210,25 240,45 270,18 300,38 330,12 360,30 400,10"
+          fill="none"
+          stroke-width="2.5"
+          stroke-dasharray="900"
+          class="stroke-accent-blue"
+          [attr.style]="
+            'opacity:0.85;stroke-dashoffset:' +
+            garudaDash() +
+            ';transition:stroke-dashoffset 2.4s cubic-bezier(.16,1,.3,1)'
+          "
+        ></polyline>
+      </svg>
+    </div>
+    <div class="relative z-2 max-w-[680px]">
+      <div class="mb-4 flex flex-wrap items-center gap-3">
+        <span class="font-display text-[36px] font-bold text-featured-ink">Garuda</span>
+        <span
+          class="rounded-pill bg-featured-ink/16 px-3 py-1.25 font-mono text-[11px] font-semibold tracking-[0.05em] text-featured-ink uppercase"
+          >Flagship · Solo Project</span
+        >
+      </div>
+      <div class="mb-4 font-sans text-[17px] font-semibold text-featured-ink/92">
+        Real-Time Indian Stock Market Analytics Platform
+      </div>
+      <p class="m-0 mb-6 font-sans text-[15.5px] leading-[1.7] text-featured-ink/72">
+        A cross-platform desktop app ingesting live NSE &amp; MCX tick data — decoding ~1,500 binary
+        packets a second, storing time-series data in TimescaleDB, and rendering gap-free charts.
+        Architected, built, and operated entirely solo, from UI to infrastructure.
+      </p>
+      <div class="mb-6.5 flex flex-wrap gap-2">
+        @for (
+          tag of ['Angular 21', 'Electron', 'Bun + Fastify v5', 'TimescaleDB', 'TradingView'];
+          track tag
+        ) {
+          <span
+            class="rounded-pill bg-featured-ink/10 px-3.5 py-1.75 font-mono text-xs font-medium text-featured-ink/85"
+            >{{ tag }}</span
+          >
+        }
+      </div>
+      <div class="flex items-center gap-2 font-sans text-[15px] font-bold text-featured-ink">
+        View Full Case Study <span class="text-[17px]">→</span>
+      </div>
+    </div>
+  </a>
+</section>
+
+<section class="bg-bg px-[clamp(24px,6vw,80px)] pt-5 pb-27.5">
+  <div class="mx-auto flex max-w-[1200px] flex-col gap-6">
+    @for (project of projects; track project.key) {
+      <app-work-project-card appScrollReveal [project]="project" />
+    }
+  </div>
+</section>
+
+<section
+  appScrollReveal
+  class="relative overflow-hidden bg-bg-alt px-[clamp(24px,6vw,80px)] py-32.5"
+>
+  <div
+    class="pointer-events-none absolute top-1/2 left-1/2 h-[56vw] max-h-[760px] w-[56vw] max-w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-blue opacity-10 blur-[160px]"
+  ></div>
+  <div class="relative z-2 mx-auto max-w-[720px] text-center">
+    <h2
+      class="m-0 mb-4.5 font-display text-[clamp(30px,4.6vw,56px)] leading-[1.08] font-bold tracking-[-0.02em] text-text"
+    >
+      Curious how these were built?
+    </h2>
+    <p class="m-0 mb-9 font-sans text-[clamp(15px,1.6vw,18px)] leading-[1.6] text-text-secondary">
+      Trace the roles and teams behind each project, or reach out directly.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3.5">
+      <a
+        routerLink="/experience"
+        class="rounded-pill bg-text px-9 py-4.5 font-sans text-[15px] font-bold text-bg no-underline transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >View Experience</a
+      >
+      <a
+        routerLink="/contact"
+        class="rounded-pill border border-border px-9 py-4.5 font-sans text-[15px] font-bold text-text no-underline transition-colors hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >Get in Touch</a
+      >
+    </div>
+  </div>
+</section>

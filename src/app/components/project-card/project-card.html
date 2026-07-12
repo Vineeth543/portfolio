@@ -1,0 +1,19 @@
+<a
+  routerLink="/work"
+  class="block rounded-card border border-border bg-surface p-7 no-underline transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-border-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+>
+  <div
+    class="mb-3 font-mono text-[11px] font-semibold tracking-[0.06em] text-text-tertiary uppercase"
+  >
+    {{ project().org }}
+  </div>
+  <div class="mb-2.5 font-display text-[19px] font-bold text-text">{{ project().title }}</div>
+  <p class="mb-4.5 font-sans text-sm leading-[1.6] text-text-secondary">
+    {{ project().description }}
+  </p>
+  <div class="flex flex-wrap gap-1.5">
+    @for (badge of tagBadges(); track badge.label) {
+      <app-skill-badge [badge]="badge" />
+    }
+  </div>
+</a>

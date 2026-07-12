@@ -1,0 +1,251 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@theme {
+  /* Type scale families */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-sans: 'Manrope', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Nav collapses to the hamburger menu at this width in the mockups */
+  --breakpoint-nav: 1080px;
+
+  /* Semantic colors — values live in :root/.dark below so the theme toggle can swap them at runtime */
+  --color-bg: var(--vs-bg);
+  --color-bg-alt: var(--vs-bg-alt);
+  --color-surface: var(--vs-surface);
+  --color-surface-raised: var(--vs-surface-raised);
+  --color-border: var(--vs-border);
+  --color-border-strong: var(--vs-border-strong);
+  --color-text: var(--vs-text);
+  --color-text-secondary: var(--vs-text-secondary);
+  --color-text-tertiary: var(--vs-text-tertiary);
+  --color-accent: var(--vs-accent);
+  --color-accent-blue: var(--vs-accent-blue);
+  --color-nav: var(--vs-nav);
+  --color-success: #33d17a;
+
+  /* "Featured" surfaces — the Garuda trading-terminal identity, shared by the
+     /garuda hero and the featured project cards on /home and /work */
+  --color-featured-base: var(--vs-featured-base);
+  --color-featured-grid: var(--vs-featured-grid);
+  --color-featured-ink: var(--vs-featured-ink);
+  --color-featured-panel: var(--vs-featured-panel);
+  --color-featured-badge-ink: var(--vs-featured-badge-ink);
+  --color-featured-card-from: var(--vs-featured-card-from);
+  --color-featured-card-to: var(--vs-featured-card-to);
+
+  /* Candlestick motif on the /garuda hero — TradingView convention: green up, red down */
+  --color-candle-up: var(--vs-candle-up);
+  --color-candle-down: var(--vs-candle-down);
+
+  --radius-pill: 100px;
+  --radius-card: 24px;
+  --radius-card-sm: 20px;
+  --radius-icon: 16px;
+
+  --shadow-float: 0 14px 32px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 24px 48px rgba(0, 0, 0, 0.28);
+}
+
+:root {
+  --vs-bg: #faf9f6;
+  --vs-bg-alt: #f3f1ec;
+  --vs-surface: #ffffff;
+  --vs-surface-raised: #f3f1ec;
+  --vs-border: rgba(20, 20, 26, 0.1);
+  --vs-border-strong: rgba(20, 20, 26, 0.18);
+  --vs-text: #14141a;
+  --vs-text-secondary: rgba(20, 20, 26, 0.64);
+  --vs-text-tertiary: rgba(20, 20, 26, 0.44);
+  --vs-accent: #e23f2e;
+  --vs-accent-blue: #0c7fe0;
+  --vs-nav: rgba(255, 255, 255, 0.78);
+  --vs-featured-base: #faf9f6;
+  --vs-featured-grid: rgba(20, 20, 26, 0.06);
+  --vs-featured-ink: #14141a;
+  --vs-featured-panel: #ffffff;
+  --vs-featured-badge-ink: #c73321;
+  --vs-featured-card-from: #ffffff;
+  --vs-featured-card-to: #e9f1fa;
+  --vs-candle-up: #1e9e5a;
+  --vs-candle-down: #e23f2e;
+}
+
+.dark {
+  --vs-bg: #08080a;
+  --vs-bg-alt: #0d0d10;
+  --vs-surface: #141417;
+  --vs-surface-raised: #1b1b1f;
+  --vs-border: rgba(255, 255, 255, 0.1);
+  --vs-border-strong: rgba(255, 255, 255, 0.2);
+  --vs-text: #f5f5f7;
+  --vs-text-secondary: rgba(245, 245, 247, 0.64);
+  --vs-text-tertiary: rgba(245, 245, 247, 0.42);
+  --vs-accent: #ff4b3e;
+  --vs-accent-blue: #2fa8ff;
+  --vs-nav: rgba(18, 18, 21, 0.78);
+  --vs-featured-base: #08080a;
+  --vs-featured-grid: rgba(255, 255, 255, 0.06);
+  --vs-featured-ink: #f5f5f7;
+  --vs-featured-panel: #0d0d10;
+  --vs-featured-badge-ink: #ff6b5e;
+  --vs-featured-card-from: #101014;
+  --vs-featured-card-to: #1a2233;
+  --vs-candle-up: #33d17a;
+  --vs-candle-down: #ff4b3e;
+}
+
+html {
+  scroll-padding-top: 96px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Keyframes must live here, not in component stylesheets: Angular's emulated view
+   encapsulation renames component-defined @keyframes (e.g. _ngcontent-x_gridDrift),
+   which breaks animation-name references coming from Tailwind utilities and inline
+   style bindings — those always use the unscoped name. */
+@keyframes gridDrift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 56px 56px;
+  }
+}
+@keyframes floatGlowA {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-24px, 26px);
+  }
+}
+@keyframes floatGlowB {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(24px, -20px);
+  }
+}
+@keyframes blinkCursor {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes heroRingSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes contourGlowA {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes contourGlowB {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+@keyframes portraitDrift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-260px);
+    opacity: 0;
+  }
+}
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Smooth color swap when the theme toggles. Scoped to structural/common elements (not `*`)
+   and to color properties only, so transform/shadow transitions elsewhere are untouched.
+   Elements with their own transition-* utility override this per the cascade. */
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    body,
+    header,
+    footer,
+    nav,
+    main,
+    section,
+    div,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    li,
+    a,
+    button,
+    input,
+    textarea {
+      transition-property: background-color, color, border-color, fill, stroke;
+      transition-duration: 300ms;
+      transition-timing-function: ease;
+    }
+  }
+}

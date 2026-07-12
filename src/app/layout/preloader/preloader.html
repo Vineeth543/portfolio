@@ -1,0 +1,23 @@
+@if (preloader.visible()) {
+  <div
+    aria-hidden="true"
+    class="fixed inset-0 z-[300] bg-bg transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]"
+    [class.-translate-y-full]="preloader.exiting()"
+  >
+    <span
+      class="absolute top-7 left-[clamp(24px,6vw,80px)] font-display text-[19px] font-bold tracking-[-0.02em] text-text opacity-30"
+      >VS.</span
+    >
+
+    <div
+      class="absolute bottom-[clamp(28px,7vh,76px)] left-[clamp(24px,6vw,80px)] font-mono text-[clamp(64px,13vw,150px)] leading-none font-semibold tracking-[-0.04em] text-text tabular-nums"
+    >
+      {{ preloader.progress() }}<span class="text-[0.35em] font-medium">%</span>
+    </div>
+
+    <div
+      class="absolute bottom-0 left-0 h-0.5 w-full origin-left bg-[#e23f2e]"
+      [style.transform]="'scaleX(' + preloader.progress() / 100 + ')'"
+    ></div>
+  </div>
+}

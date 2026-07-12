@@ -1,0 +1,232 @@
+<div class="flex flex-wrap overflow-hidden rounded-[28px] border border-border bg-surface">
+  <div class="min-w-0 flex-[1_1_320px] p-11">
+    <div class="mb-4 flex flex-wrap items-center gap-2.5">
+      <span
+        class="font-mono text-[11px] font-semibold tracking-[0.08em] text-text-tertiary uppercase"
+        >{{ project().org }}</span
+      >
+      <span class="h-0.75 w-0.75 rounded-full bg-text-tertiary"></span>
+      <span
+        class="font-mono text-[11px] font-semibold tracking-[0.08em] text-text-tertiary uppercase"
+        >{{ project().timeframe }}</span
+      >
+    </div>
+    <div class="mb-4 font-display text-[clamp(21px,2.6vw,28px)] font-bold text-text">
+      {{ project().title }}
+    </div>
+    <p class="m-0 mb-5.5 font-sans text-[15px] leading-[1.7] text-text-secondary">
+      {{ project().overview }}
+    </p>
+    <div class="mb-6 flex flex-col gap-2.5">
+      @for (bullet of project().bullets; track bullet) {
+        <div class="flex items-start gap-2.5">
+          <span class="mt-2 h-1.25 w-1.25 flex-none rounded-full bg-accent"></span>
+          <span class="font-sans text-[13.5px] leading-[1.6] text-text-secondary">{{
+            bullet
+          }}</span>
+        </div>
+      }
+    </div>
+    <div class="mb-5 flex flex-wrap gap-2">
+      @for (tag of project().tags; track tag) {
+        <span
+          class="rounded-pill border border-border px-3.25 py-1.5 font-mono text-[11.5px] font-medium text-text-secondary"
+          >{{ tag }}</span
+        >
+      }
+    </div>
+    <div class="font-sans text-[12.5px] font-medium text-text-tertiary italic">
+      {{ project().note }}
+    </div>
+  </div>
+
+  <div
+    class="relative flex min-w-[220px] flex-[1_1_240px] items-center justify-center overflow-hidden p-7.5 [background:radial-gradient(circle_at_60%_50%,var(--color-bg-alt),var(--color-surface))]"
+  >
+    @switch (project().motif) {
+      @case ('grid') {
+        <svg viewBox="0 0 240 240" class="h-full w-full max-w-[260px]">
+          @for (cell of gridCells(); track cell.x + '-' + cell.y) {
+            <rect
+              [attr.x]="cell.x"
+              [attr.y]="cell.y"
+              width="30"
+              height="30"
+              rx="6"
+              fill="var(--color-accent-blue)"
+              opacity="0.15"
+              [attr.style]="'animation: pulseDot 3s ease-in-out ' + cell.delay + 's infinite'"
+            ></rect>
+          }
+        </svg>
+      }
+      @case ('flow') {
+        <svg viewBox="0 0 240 240" class="h-full w-full max-w-[260px]">
+          <line
+            x1="40"
+            y1="60"
+            x2="120"
+            y2="60"
+            stroke="var(--color-accent-blue)"
+            stroke-width="2"
+            opacity="0.3"
+          ></line>
+          <line
+            x1="120"
+            y1="60"
+            x2="120"
+            y2="140"
+            stroke="var(--color-accent-blue)"
+            stroke-width="2"
+            opacity="0.3"
+          ></line>
+          <line
+            x1="120"
+            y1="140"
+            x2="200"
+            y2="140"
+            stroke="var(--color-accent-blue)"
+            stroke-width="2"
+            opacity="0.3"
+          ></line>
+          <line
+            x1="120"
+            y1="60"
+            x2="200"
+            y2="60"
+            stroke="var(--color-accent-blue)"
+            stroke-width="2"
+            opacity="0.3"
+          ></line>
+          <line
+            x1="40"
+            y1="60"
+            x2="40"
+            y2="180"
+            stroke="var(--color-accent-blue)"
+            stroke-width="2"
+            opacity="0.3"
+          ></line>
+          <line
+            x1="40"
+            y1="180"
+            x2="120"
+            y2="180"
+            stroke="var(--color-accent-blue)"
+            stroke-width="2"
+            opacity="0.3"
+          ></line>
+          <circle
+            cx="40"
+            cy="60"
+            r="9"
+            fill="var(--color-accent-blue)"
+            opacity="0.5"
+            style="animation: pulseDot 2.4s ease-in-out infinite"
+          ></circle>
+          <circle
+            cx="120"
+            cy="60"
+            r="9"
+            fill="var(--color-accent-blue)"
+            opacity="0.5"
+            style="animation: pulseDot 2.4s ease-in-out 0.3s infinite"
+          ></circle>
+          <circle
+            cx="200"
+            cy="60"
+            r="9"
+            fill="var(--color-accent-blue)"
+            opacity="0.5"
+            style="animation: pulseDot 2.4s ease-in-out 0.6s infinite"
+          ></circle>
+          <circle
+            cx="120"
+            cy="140"
+            r="9"
+            fill="var(--color-accent-blue)"
+            opacity="0.5"
+            style="animation: pulseDot 2.4s ease-in-out 0.9s infinite"
+          ></circle>
+          <circle
+            cx="200"
+            cy="140"
+            r="9"
+            fill="var(--color-accent-blue)"
+            opacity="0.5"
+            style="animation: pulseDot 2.4s ease-in-out 1.2s infinite"
+          ></circle>
+          <circle
+            cx="40"
+            cy="180"
+            r="9"
+            fill="var(--color-accent-blue)"
+            opacity="0.5"
+            style="animation: pulseDot 2.4s ease-in-out 1.5s infinite"
+          ></circle>
+          <circle
+            cx="120"
+            cy="180"
+            r="9"
+            fill="var(--color-accent-blue)"
+            opacity="0.5"
+            style="animation: pulseDot 2.4s ease-in-out 1.8s infinite"
+          ></circle>
+        </svg>
+      }
+      @case ('radial') {
+        <svg viewBox="0 0 240 240" class="h-full w-full max-w-[260px]">
+          <circle
+            cx="120"
+            cy="120"
+            r="40"
+            fill="none"
+            stroke="var(--color-accent-blue)"
+            stroke-width="1.5"
+            opacity="0.25"
+          ></circle>
+          <circle
+            cx="120"
+            cy="120"
+            r="75"
+            fill="none"
+            stroke="var(--color-accent-blue)"
+            stroke-width="1.5"
+            opacity="0.25"
+          ></circle>
+          <circle
+            cx="120"
+            cy="120"
+            r="110"
+            fill="none"
+            stroke="var(--color-accent-blue)"
+            stroke-width="1.5"
+            opacity="0.25"
+          ></circle>
+          @for (node of radialNodes(); track node.x + '-' + node.y) {
+            <line
+              x1="120"
+              y1="120"
+              [attr.x2]="node.x"
+              [attr.y2]="node.y"
+              stroke="var(--color-accent-blue)"
+              stroke-width="1.5"
+              opacity="0.2"
+            ></line>
+          }
+          <circle cx="120" cy="120" r="10" fill="var(--color-accent-blue)" opacity="0.7"></circle>
+          @for (node of radialNodes(); track node.x + '-' + node.y) {
+            <circle
+              [attr.cx]="node.x"
+              [attr.cy]="node.y"
+              r="7"
+              fill="var(--color-accent-blue)"
+              opacity="0.55"
+              [attr.style]="'animation: pulseDot 2.8s ease-in-out ' + node.delay + 's infinite'"
+            ></circle>
+          }
+        </svg>
+      }
+    }
+  </div>
+</div>

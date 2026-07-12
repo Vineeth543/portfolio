@@ -1,0 +1,78 @@
+<section class="relative overflow-hidden bg-bg px-[clamp(24px,6vw,80px)] pt-40 pb-17.5">
+  <div
+    class="pointer-events-none absolute inset-0 animate-[gridDrift_20s_linear_infinite] opacity-50 [background-image:linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] [background-size:56px_56px]"
+  ></div>
+  <div
+    class="pointer-events-none absolute -top-[16%] -left-[8%] h-[44vw] max-h-[600px] w-[44vw] max-w-[600px] animate-[floatGlowA_16s_ease-in-out_infinite] rounded-full bg-accent-blue opacity-[0.13] blur-[130px]"
+  ></div>
+
+  <div class="relative z-2 mx-auto max-w-[1200px]">
+    <div class="mb-4 font-mono text-xs font-semibold tracking-[0.14em] text-accent uppercase">
+      Experience
+    </div>
+    <h1
+      class="m-0 mb-5.5 font-display text-[clamp(38px,5.5vw,72px)] leading-[1.05] font-bold tracking-[-0.02em] text-text"
+    >
+      Four years. Two enterprise<br />products. Zero shortcuts.
+    </h1>
+    <p
+      class="m-0 max-w-[620px] font-sans text-[clamp(15px,1.6vw,18px)] leading-[1.7] text-text-secondary"
+    >
+      A role-by-role trace from a computer-science degree to production Angular systems at
+      enterprise scale — and the independent project that pulled it all together.
+    </p>
+  </div>
+</section>
+
+<section class="bg-bg px-[clamp(24px,6vw,80px)] pt-5 pb-15">
+  <div
+    class="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-0 border-t border-border"
+  >
+    @for (highlight of highlights; track highlight.label) {
+      <div class="pt-5.5 pr-5 pb-0">
+        <div class="mb-1.5 font-display text-[26px] font-bold text-accent">
+          {{ highlight.stat }}
+        </div>
+        <div class="font-sans text-[13px] leading-[1.5] font-medium text-text-secondary">
+          {{ highlight.label }}
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="bg-bg px-[clamp(24px,6vw,80px)] pt-10 pb-27.5">
+  <div class="mx-auto flex max-w-[900px] flex-col">
+    @for (entry of entries; track entry.key) {
+      <app-experience-entry appScrollReveal [entry]="entry" />
+    }
+  </div>
+</section>
+
+<section appScrollReveal class="relative overflow-hidden bg-bg-alt px-[clamp(24px,6vw,80px)] py-32.5">
+  <div
+    class="pointer-events-none absolute top-1/2 left-1/2 h-[56vw] max-h-[760px] w-[56vw] max-w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent opacity-10 blur-[160px]"
+  ></div>
+  <div class="relative z-2 mx-auto max-w-[720px] text-center">
+    <h2
+      class="m-0 mb-4.5 font-display text-[clamp(30px,4.6vw,56px)] leading-[1.08] font-bold tracking-[-0.02em] text-text"
+    >
+      Credentials to back it up.
+    </h2>
+    <p class="m-0 mb-9 font-sans text-[clamp(15px,1.6vw,18px)] leading-[1.6] text-text-secondary">
+      Certificates, awards, and hackathon work — see how it's been recognized.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3.5">
+      <a
+        routerLink="/credentials"
+        class="rounded-pill bg-text px-9 py-4.5 font-sans text-[15px] font-bold text-bg no-underline transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >View Credentials</a
+      >
+      <a
+        routerLink="/garuda"
+        class="rounded-pill border border-border px-9 py-4.5 font-sans text-[15px] font-bold text-text no-underline transition-colors hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >Explore Garuda</a
+      >
+    </div>
+  </div>
+</section>

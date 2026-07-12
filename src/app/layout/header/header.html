@@ -1,0 +1,141 @@
+<div class="pointer-events-none fixed inset-x-0 top-0 z-[100] flex justify-center px-5 pt-[18px]">
+  <div
+    class="pointer-events-auto flex w-full max-w-[1180px] items-center justify-between gap-4 rounded-pill border border-border bg-nav py-[10px] pr-[10px] pl-[22px] backdrop-blur-xl"
+  >
+    <a
+      routerLink="/"
+      class="font-display text-[19px] font-bold tracking-[-0.02em] text-text no-underline transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+      >VS.</a
+    >
+
+    <div class="hidden gap-0.5 font-sans text-sm font-medium nav:flex">
+      @for (link of navLinks; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="text-text font-bold"
+          class="rounded-pill px-4 py-[9px] text-text-secondary no-underline transition-colors hover:text-text focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent-blue"
+          >{{ link.label }}</a
+        >
+      }
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button
+        type="button"
+        [attr.aria-label]="themeToggleLabel()"
+        (click)="toggleTheme()"
+        class="relative block h-6 w-11 flex-none cursor-pointer rounded-pill border-none bg-border p-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        <span
+          class="pointer-events-none absolute top-1/2 right-[5px] flex -translate-y-1/2 text-[#B8C4D9]"
+        >
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+        </span>
+        <span
+          class="pointer-events-none absolute top-1/2 left-[5px] flex -translate-y-1/2 text-[#F5A623]"
+        >
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.6"
+            stroke-linecap="round"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.2" y1="4.2" x2="5.6" y2="5.6"></line>
+            <line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line>
+            <line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line>
+          </svg>
+        </span>
+
+        <span
+          class="pointer-events-none absolute top-[2px] flex h-5 w-5 items-center justify-center rounded-full bg-accent transition-[left,transform] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+          [style.right]="thumbPos()"
+          [style.transform]="thumbRotate()"
+        >
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            class="absolute transition-opacity duration-[250ms]"
+            [style.opacity]="knobMoonOpacity()"
+            fill="#fff"
+          >
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            class="absolute transition-opacity duration-[250ms]"
+            [style.opacity]="knobSunOpacity()"
+            fill="none"
+            stroke="#fff"
+            stroke-width="2.6"
+            stroke-linecap="round"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.2" y1="4.2" x2="5.6" y2="5.6"></line>
+            <line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line>
+            <line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line>
+          </svg>
+        </span>
+      </button>
+
+      <a
+        [href]="resumePath"
+        [download]="resumeFilename"
+        class="hidden rounded-pill bg-accent px-5 py-[10px] font-sans text-[13px] font-semibold whitespace-nowrap text-white no-underline transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue nav:inline-flex"
+        >Resume</a
+      >
+
+      <div
+        (click)="toggleMobileMenu()"
+        class="flex h-9 w-9 flex-none cursor-pointer flex-col items-center justify-center gap-[5px] transition-opacity hover:opacity-70 nav:hidden"
+      >
+        <span class="h-0.5 w-[18px] bg-text"></span>
+        <span class="h-0.5 w-[18px] bg-text"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (mobileMenuOpen()) {
+  <div class="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-[22px] bg-bg">
+    <div
+      (click)="closeMobileMenu()"
+      class="absolute top-[22px] right-[26px] cursor-pointer font-sans text-[34px] font-normal text-text transition-opacity hover:opacity-70"
+    >
+      ×
+    </div>
+    @for (link of navLinks; track link.path) {
+      <a
+        [routerLink]="link.path"
+        (click)="closeMobileMenu()"
+        class="font-display text-[30px] font-semibold text-text no-underline transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >{{ link.label }}</a
+      >
+    }
+    <a
+      [href]="resumePath"
+      [download]="resumeFilename"
+      (click)="closeMobileMenu()"
+      class="mt-3.5 rounded-pill bg-accent px-[30px] py-3.5 font-sans text-[15px] font-semibold text-white no-underline transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+      >Resume</a
+    >
+  </div>
+}

@@ -1,0 +1,58 @@
+<footer class="border-t border-border bg-bg px-6 py-20 sm:px-10 lg:px-20">
+  <div class="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-10">
+    <div>
+      <div class="mb-3.5 font-display text-xl font-bold text-text">VS.</div>
+      <p class="mb-5 max-w-[280px] font-sans text-sm leading-relaxed text-text-secondary">
+        Angular engineer &amp; full-stack builder, based in Bengaluru, India.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        @for (s of socialLinks; track s.href) {
+          <a
+            [href]="s.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-pill border border-border px-3.5 py-2 font-mono text-xs text-text-secondary no-underline transition-colors hover:border-border-strong hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+            >{{ s.label }}</a
+          >
+        }
+      </div>
+    </div>
+    <div>
+      <div
+        class="mb-[18px] font-mono text-xs font-semibold tracking-[0.1em] text-text-tertiary uppercase"
+      >
+        Navigate
+      </div>
+      <div class="flex flex-col gap-3">
+        @for (l of footerNav; track l.path) {
+          <a
+            [routerLink]="l.path"
+            class="font-sans text-sm font-medium text-text-secondary no-underline transition-colors hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+            >{{ l.label }}</a
+          >
+        }
+      </div>
+    </div>
+    <div>
+      <div
+        class="mb-[18px] font-mono text-xs font-semibold tracking-[0.1em] text-text-tertiary uppercase"
+      >
+        Get in Touch
+      </div>
+      <a
+        href="mailto:vineethserigar17@gmail.com"
+        class="mb-3 block w-fit font-sans text-sm font-medium text-text-secondary no-underline transition-colors hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >vineethserigar17@gmail.com</a
+      >
+      <div class="mb-3 font-sans text-sm font-medium text-text-secondary">
+        Bengaluru, Karnataka, India
+      </div>
+      <div class="font-mono text-[13px] font-medium text-accent">Open to opportunities</div>
+    </div>
+  </div>
+  <div
+    class="mx-auto mt-[60px] max-w-[1200px] border-t border-border pt-7 font-sans text-[13px] text-text-tertiary"
+  >
+    <span>© 2026 Vineeth Serigar. Designed &amp; built with care.</span>
+  </div>
+</footer>

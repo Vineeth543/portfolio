@@ -1,0 +1,10 @@
+<div class="rounded-card-sm border border-border bg-surface h-full p-6.5">
+  <div class="mb-4 font-mono text-xs font-semibold tracking-widest text-text-tertiary uppercase">
+    {{ category().title }}
+  </div>
+  <div class="flex flex-wrap gap-2">
+    @for (badge of badges(); track badge.label) {
+      <app-skill-badge [badge]="badge" />
+    }
+  </div>
+</div>

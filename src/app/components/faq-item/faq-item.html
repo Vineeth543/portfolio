@@ -1,0 +1,26 @@
+<div class="border-b border-border">
+  <button
+    type="button"
+    (click)="toggle()"
+    [attr.aria-expanded]="open()"
+    class="flex w-full cursor-pointer items-center justify-between gap-4 border-none bg-transparent px-1 py-5.5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+  >
+    <span class="font-sans text-[15.5px] font-semibold text-text">{{ faq().question }}</span>
+    <span
+      class="flex-none font-sans text-[22px] font-light text-text-tertiary transition-transform duration-300"
+      [class.rotate-45]="open()"
+      >+</span
+    >
+  </button>
+  <div
+    class="grid transition-[grid-template-rows] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+    [class.grid-rows-[1fr]]="open()"
+    [class.grid-rows-[0fr]]="!open()"
+  >
+    <div class="overflow-hidden">
+      <p class="mx-1 mt-0 mb-5.5 max-w-[560px] font-sans text-[14.5px] leading-[1.7] text-text-secondary">
+        {{ faq().answer }}
+      </p>
+    </div>
+  </div>
+</div>
