@@ -1,0 +1,71 @@
+<div
+  class="flex h-full flex-col overflow-hidden rounded-card-sm border border-border bg-surface transition-colors duration-300 hover:border-border-strong"
+>
+  <div class="flex h-7 items-center gap-1.5 border-b border-border bg-bg-alt px-3.5">
+    <span class="h-2.25 w-2.25 rounded-full bg-border-strong"></span>
+    <span class="h-2.25 w-2.25 rounded-full bg-border-strong"></span>
+    <span class="h-2.25 w-2.25 rounded-full bg-border-strong"></span>
+  </div>
+
+  <div class="overflow-hidden bg-bg-alt">
+    <img
+      [src]="project().screenshotPath"
+      [alt]="project().title + ' screenshot'"
+      class="aspect-video w-full object-cover object-top transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.05]"
+    />
+  </div>
+
+  <div class="flex flex-1 flex-col p-5.5">
+    <span
+      class="mb-3 w-fit rounded-pill border border-border bg-bg-alt px-2.75 py-1 font-mono text-[10.5px] font-semibold tracking-[0.05em] text-text-tertiary uppercase"
+    >
+      {{ project().category }}
+    </span>
+
+    <div class="mb-2 font-display text-[17px] font-bold text-text">{{ project().title }}</div>
+
+    <p class="mb-4 font-sans text-[13.5px] leading-[1.6] text-text-secondary">
+      {{ project().description }}
+    </p>
+
+    <div class="mb-5 flex flex-wrap gap-1.5">
+      @for (badge of techBadges(); track badge.label) {
+        <app-skill-badge [badge]="badge" />
+      }
+    </div>
+
+    <div class="mt-auto flex items-center gap-4 border-t border-border pt-4">
+      @if (project().liveUrl) {
+        <a
+          [href]="project().liveUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 font-sans text-[13px] font-bold text-accent-blue no-underline transition-[gap] duration-250 ease-in-out hover:gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+          >Live Demo <span aria-hidden="true">↗</span></a
+        >
+      }
+      <a
+        [href]="project().githubUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 font-sans text-[13px] font-bold text-text no-underline transition-[gap,color] duration-250 ease-in-out hover:gap-2.5 hover:text-accent-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >GitHub <span aria-hidden="true">↗</span></a
+      >
+      @if (project().linkedInUrl) {
+        <a
+          [href]="project().linkedInUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn post about {{ project().title }}"
+          class="ml-auto inline-flex items-center text-text-tertiary transition-colors duration-250 hover:text-accent-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+        >
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true">
+            <path
+              d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z"
+            />
+          </svg>
+        </a>
+      }
+    </div>
+  </div>
+</div>

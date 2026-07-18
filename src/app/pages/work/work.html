@@ -87,6 +87,26 @@
   </div>
 </section>
 
+<section appScrollReveal class="border-t border-border bg-bg px-[clamp(24px,6vw,80px)] pt-14 pb-24">
+  <div class="mx-auto max-w-[1200px]">
+    <div
+      class="mb-3 font-mono text-xs font-semibold tracking-[0.14em] text-text-tertiary uppercase"
+    >
+      More Projects
+    </div>
+    <h2
+      class="m-0 mb-10 font-display text-[clamp(24px,3.2vw,32px)] font-bold tracking-[-0.01em] text-text"
+    >
+      Smaller builds, freelance work, and early projects
+    </h2>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      @for (project of additionalProjects; track project.title) {
+        <app-additional-project-card [project]="project" />
+      }
+    </div>
+  </div>
+</section>
+
 <section
   appScrollReveal
   class="relative overflow-hidden bg-bg-alt px-[clamp(24px,6vw,80px)] py-32.5"
