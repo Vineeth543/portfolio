@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { SkillBadge, SkillBadgeComponent } from '../../components/skill-badge/skill-badge';
+import { SeoService } from '../../core/seo.service';
 import { ScrollReveal } from '../../shared/scroll-reveal.directive';
 
 interface GlanceItem {
@@ -41,6 +42,8 @@ interface FunFact {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class About {
+  private readonly seo = inject(SeoService);
+
   protected readonly glanceItems: GlanceItem[] = [
     { label: 'Location', value: 'Bengaluru, India' },
     { label: 'Experience', value: '~4 years' },
@@ -147,4 +150,13 @@ export class About {
     { tag: 'Off the Clock', text: 'Traveling, hiking, and exploring nature.' },
     { tag: 'Handle Origin', text: 'Goes by "avenger17" on CodeChef.' },
   ];
+
+  constructor() {
+    this.seo.setPageSeo({
+      title: 'About | Vineeth Serigar',
+      description:
+        'Angular-focused software engineer based in Bengaluru — background, engineering philosophy, and the path from a full-stack capstone to Garuda.',
+      path: '/about',
+    });
+  }
 }

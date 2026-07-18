@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { FlowStageComponent, FlowStageData } from '../../../components/flow-stage/flow-stage';
@@ -9,6 +9,7 @@ import {
 } from '../../../components/highlight-card/highlight-card';
 import { MetricCardComponent, MetricCardData } from '../../../components/metric-card/metric-card';
 import { SkillBadge, SkillBadgeComponent } from '../../../components/skill-badge/skill-badge';
+import { SeoService } from '../../../core/seo.service';
 import { ScrollReveal } from '../../../shared/scroll-reveal.directive';
 
 interface Capability {
@@ -68,6 +69,8 @@ const CANDLES: Candle[] = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Garuda {
+  private readonly seo = inject(SeoService);
+
   protected readonly candles: Candle[] = CANDLES;
 
   protected readonly particles: Particle[] = Array.from({ length: 14 }, (_, i) => ({
@@ -203,4 +206,13 @@ export class Garuda {
     'Argon2id',
     'Ed25519 JWT',
   ].map((label) => ({ label, size: 'lg' }));
+
+  constructor() {
+    this.seo.setPageSeo({
+      title: 'Garuda — Real-Time Stock Market Analytics | Vineeth Serigar',
+      description:
+        'Garuda: a solo-built desktop app decoding ~1,500 live NSE & MCX binary packets a second, with sub-20ms fuzzy search and gap-free real-time charts.',
+      path: '/garuda',
+    });
+  }
 }

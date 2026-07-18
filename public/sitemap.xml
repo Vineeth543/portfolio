@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.vineeth.software/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.vineeth.software/work</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.vineeth.software/garuda</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.vineeth.software/experience</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vineeth.software/about</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vineeth.software/credentials</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.vineeth.software/contact</loc>
+    <priority>0.6</priority>
+  </url>
+</urlset>

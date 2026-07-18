@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 import { environment } from '../../../environments/environment';
 import { FaqItem, FaqItemComponent } from '../../components/faq-item/faq-item';
+import { SeoService } from '../../core/seo.service';
 import { RESUME_DOWNLOAD_FILENAME, RESUME_PATH } from '../../shared/resume.constant';
 import { ScrollReveal } from '../../shared/scroll-reveal.directive';
 
@@ -31,6 +32,7 @@ const FIELD_BASE_CLASSES =
 })
 export class Contact {
   private readonly http = inject(HttpClient);
+  private readonly seo = inject(SeoService);
 
   protected readonly form = new FormGroup({
     name: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
@@ -103,6 +105,15 @@ export class Contact {
         'Frontend is my core strength, but I independently design and operate full-stack systems — see Garuda.',
     },
   ];
+
+  constructor() {
+    this.seo.setPageSeo({
+      title: 'Contact | Vineeth Serigar',
+      description:
+        'Get in touch with Vineeth Serigar, a Bengaluru-based software engineer open to Angular, frontend, and full-stack opportunities.',
+      path: '/contact',
+    });
+  }
 
   protected fieldClasses(controlName: 'name' | 'email' | 'subject' | 'message'): string {
     const control = this.form.controls[controlName];

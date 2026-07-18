@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import {
   Credential,
   CredentialCardComponent,
 } from '../../components/credential-card/credential-card';
+import { SeoService } from '../../core/seo.service';
 import { ScrollReveal } from '../../shared/scroll-reveal.directive';
 
 interface CpStat {
@@ -21,6 +22,8 @@ interface CpStat {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Credentials {
+  private readonly seo = inject(SeoService);
+
   protected readonly certificates: Credential[] = [
     {
       key: 'ibm',
@@ -100,4 +103,13 @@ export class Credentials {
     { value: '1570', label: 'Peak rating' },
     { value: '28', label: 'Problems solved' },
   ];
+
+  constructor() {
+    this.seo.setPageSeo({
+      title: 'Certificates & Awards | Vineeth Serigar',
+      description:
+        'Certificates and awards earned by Vineeth Serigar, including IBM cybersecurity, HackerRank problem solving, and a Netcracker award.',
+      path: '/credentials',
+    });
+  }
 }

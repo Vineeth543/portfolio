@@ -16,6 +16,7 @@ import {
   Project,
   WorkProjectCardComponent,
 } from '../../components/work-project-card/work-project-card';
+import { SeoService } from '../../core/seo.service';
 import { ScrollReveal } from '../../shared/scroll-reveal.directive';
 
 const GARUDA_REVEAL_DELAY_MS = 500;
@@ -29,6 +30,7 @@ const GARUDA_REVEAL_DELAY_MS = 500;
 })
 export class Work {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly seo = inject(SeoService);
 
   protected readonly projects: Project[] = [
     {
@@ -132,6 +134,13 @@ export class Work {
   protected readonly garudaDash = computed(() => (this.garudaVisible() ? '0' : '900'));
 
   constructor() {
+    this.seo.setPageSeo({
+      title: 'Projects & Case Studies | Vineeth Serigar',
+      description:
+        "Selected engineering work: Garuda's real-time trading platform, two Netcracker Technology B2B portals, and smaller freelance and personal projects.",
+      path: '/work',
+    });
+
     const garudaTimer = setTimeout(() => this.garudaVisible.set(true), GARUDA_REVEAL_DELAY_MS);
     this.destroyRef.onDestroy(() => clearTimeout(garudaTimer));
   }

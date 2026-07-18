@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import {
   ExperienceEntry,
   ExperienceEntryComponent,
 } from '../../components/experience-entry/experience-entry';
+import { SeoService } from '../../core/seo.service';
 import { ScrollReveal } from '../../shared/scroll-reveal.directive';
 
 interface HighlightStat {
@@ -20,6 +21,8 @@ interface HighlightStat {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Experience {
+  private readonly seo = inject(SeoService);
+
   protected readonly highlights: HighlightStat[] = [
     { stat: '4', label: 'Years professional experience' },
     { stat: '2', label: 'Enterprise B2B products shipped' },
@@ -113,4 +116,13 @@ export class Experience {
       linkHref: '/garuda',
     },
   ];
+
+  constructor() {
+    this.seo.setPageSeo({
+      title: 'Experience at Netcracker Technology | Vineeth Serigar',
+      description:
+        '4+ years as a software engineer at Netcracker Technology building enterprise B2B portals with Angular, NgRx, and RxJS.',
+      path: '/experience',
+    });
+  }
 }

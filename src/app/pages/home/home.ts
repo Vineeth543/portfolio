@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { SeoService } from '../../core/seo.service';
 import {
   CareerNode,
   CareerTimelineNodeComponent,
@@ -58,6 +59,7 @@ const GARUDA_REVEAL_DELAY_MS = 900;
 })
 export class Home {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly seo = inject(SeoService);
 
   protected readonly heroBadges: SkillBadge[] = [
     { label: 'Angular', variant: 'filled', size: 'lg' },
@@ -152,6 +154,13 @@ export class Home {
   private phaseTimer: ReturnType<typeof setTimeout> | undefined;
 
   constructor() {
+    this.seo.setPageSeo({
+      title: 'Vineeth Serigar — From Binary Packets to Pixel-Perfect UI',
+      description:
+        'Vineeth Serigar, software engineer. 4+ years building enterprise B2B UIs with Angular; solo-built Garuda, a real-time stock market analytics platform.',
+      path: '/',
+    });
+
     this.typeTimer = setInterval(() => this.tick(), TYPE_SPEED_MS);
     const statsTimer = setTimeout(() => this.statsActive.set(true), STATS_DELAY_MS);
     const garudaTimer = setTimeout(() => this.garudaVisible.set(true), GARUDA_REVEAL_DELAY_MS);
