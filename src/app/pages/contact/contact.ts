@@ -90,19 +90,19 @@ export class Contact {
       key: 'teamwork',
       question: 'How do you work in a team?',
       answer:
-        "Agile/Scrum with sprint planning and Jira — I've spent my career contributing within teams of 5–6 engineers on enterprise products.",
+        "Agile/Scrum with sprint planning and Jira - I've spent my career contributing within teams of 5–6 engineers on enterprise products.",
     },
     {
       key: 'ai',
       question: 'Do you use AI tools?',
       answer:
-        'Yes — Claude Code, GitHub Copilot, Cursor, Codex and Antigravity, as productivity accelerants while keeping quality ownership.',
+        'Yes - Claude Code, GitHub Copilot, Cursor, Codex and Antigravity, as productivity accelerants while keeping quality ownership.',
     },
     {
       key: 'fullstack',
       question: 'Can you work full-stack, or frontend only?',
       answer:
-        'Frontend is my core strength, but I independently design and operate full-stack systems — see Garuda.',
+        'Frontend is my core strength, but I independently design and operate full-stack systems - see Garuda.',
     },
   ];
 

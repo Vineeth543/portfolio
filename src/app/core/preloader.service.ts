@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
 
-/* Must match the hero portrait src in home.html — the preload only helps if
+/* Must match the hero portrait src in home.html - the preload only helps if
    the browser cache key (URL) is identical. */
 const HERO_IMAGE_SRC = '/assets/profile-vineeth.png';
 
@@ -35,8 +35,8 @@ export class PreloaderService {
       return;
     }
 
-    /* Kick off the hero fetch immediately — before HomeComponent's lazy chunk
-       even resolves — so the <img> in the hero hits a warm cache. Resolves on
+    /* Kick off the hero fetch immediately - before HomeComponent's lazy chunk
+       even resolves - so the <img> in the hero hits a warm cache. Resolves on
        load, on error, or at the hard ceiling; it can never hang the overlay. */
     const imageReady = new Promise<void>((resolve) => {
       const image = new Image();
@@ -55,7 +55,7 @@ export class PreloaderService {
       return;
     }
 
-    /* Ease-out cubic from 0 toward 99 over the fixed duration — fast start,
+    /* Ease-out cubic from 0 toward 99 over the fixed duration - fast start,
        settling in. Holds at 99 until the image gate opens. */
     const startTime = performance.now();
     const tick = (now: number): void => {

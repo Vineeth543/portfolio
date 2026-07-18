@@ -84,12 +84,12 @@ export class Credentials {
       imageSrc: '/assets/award-netcracker-difference.jpg',
       imageAlt: '"You’ve Made The Difference" award certificate from Netcracker Technology',
       description:
-        'An internal recognition award for consistently delivering exceptional value to customers and stakeholders — a formal performance incentive recognizing individual contribution, approved at the organizational level.',
+        'An internal recognition award for consistently delivering exceptional value to customers and stakeholders - a formal performance incentive recognizing individual contribution, approved at the organizational level.',
     },
     {
       key: 'stepathon',
       category: 'award',
-      title: 'Stepathon 2024 — Walk to Wellness',
+      title: 'Stepathon 2024 - Walk to Wellness',
       issuer: 'Netcracker Technology',
       date: '2024',
       customVisual: 'stepathon',

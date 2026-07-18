@@ -119,7 +119,7 @@ export class Garuda {
     {
       tag: 'Ingestion',
       title: 'High-Throughput Market Data',
-      desc: 'Ingests live NSE & MCX tick data via WebSocket streams, decoding ~1,500 binary packets/sec in pure TypeScript with DataView — no external parsing libraries.',
+      desc: 'Ingests live NSE & MCX tick data via WebSocket streams, decoding ~1,500 binary packets/sec in pure TypeScript with DataView - no external parsing libraries.',
     },
     {
       tag: 'Backend',
@@ -169,7 +169,7 @@ export class Garuda {
   protected readonly capabilities: Capability[] = [
     {
       title: 'System design thinking',
-      desc: 'Every component — ingestion, storage, API, client — was chosen and composed deliberately, not defaulted into.',
+      desc: 'Every component - ingestion, storage, API, client - was chosen and composed deliberately, not defaulted into.',
     },
     {
       title: 'Scalability',
@@ -181,11 +181,11 @@ export class Garuda {
     },
     {
       title: 'Innovation under constraint',
-      desc: 'Sub-20ms search and sub-millisecond reads, delivered on a €4/month VM — efficiency as a design goal, not an afterthought.',
+      desc: 'Sub-20ms search and sub-millisecond reads, delivered on a €4/month VM - efficiency as a design goal, not an afterthought.',
     },
     {
       title: 'Product vision',
-      desc: 'Garuda exists because I wanted to see market structure clearly in real time — the platform is built around that single, clear purpose.',
+      desc: 'Garuda exists because I wanted to see market structure clearly in real time - the platform is built around that single, clear purpose.',
     },
   ];
 
@@ -209,7 +209,7 @@ export class Garuda {
 
   constructor() {
     this.seo.setPageSeo({
-      title: 'Garuda — Real-Time Stock Market Analytics | Vineeth Serigar',
+      title: 'Garuda - Real-Time Stock Market Analytics | Vineeth Serigar',
       description:
         'Garuda: a solo-built desktop app decoding ~1,500 live NSE & MCX binary packets a second, with sub-20ms fuzzy search and gap-free real-time charts.',
       path: '/garuda',

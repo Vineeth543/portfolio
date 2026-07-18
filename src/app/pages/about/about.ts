@@ -75,7 +75,7 @@ export class About {
     {
       year: '2025–Present',
       title: 'Independent mastery',
-      desc: 'Began building Garuda, a solo flagship real-time analytics platform showcasing end-to-end engineering — frontend, backend, systems design, security and DevOps.',
+      desc: 'Began building Garuda, a solo flagship real-time analytics platform showcasing end-to-end engineering - frontend, backend, systems design, security and DevOps.',
     },
   ];
 
@@ -95,7 +95,7 @@ export class About {
     {
       num: '01',
       title: 'Performance is a feature',
-      desc: 'Sub-second search, sub-millisecond reads, and gap-free real-time updates aren’t extras — they’re the product.',
+      desc: 'Sub-second search, sub-millisecond reads, and gap-free real-time updates aren’t extras - they’re the product.',
     },
     {
       num: '02',
@@ -155,7 +155,7 @@ export class About {
     this.seo.setPageSeo({
       title: 'About | Vineeth Serigar',
       description:
-        'Angular-focused software engineer based in Bengaluru — background, engineering philosophy, and the path from a full-stack capstone to Garuda.',
+        'Angular-focused software engineer based in Bengaluru - background, engineering philosophy, and the path from a full-stack capstone to Garuda.',
       path: '/about',
     });
   }

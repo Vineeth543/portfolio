@@ -40,7 +40,7 @@ export class Experience {
       teaser:
         'Foundational degree covering core CS, culminating in a full-stack capstone: a citizen-services e-governance platform.',
       bullets: [
-        'Final-year capstone: Citizen Centric Panchayat System — a full-stack e-governance platform (React, Node/Express, MongoDB, Razorpay, AWS S3).',
+        'Final-year capstone: Citizen Centric Panchayat System - a full-stack e-governance platform (React, Node/Express, MongoDB, Razorpay, AWS S3).',
         'Practiced competitive programming on CodeChef and HackerRank alongside coursework.',
       ],
       tags: ['Computer Science', 'Data Structures', 'DBMS'],
@@ -55,9 +55,9 @@ export class Experience {
       title: 'Full Stack Web Developer Intern',
       org: 'DevTown (formerly ShapeAI)',
       teaser:
-        'An intensive, project-driven internship — front-end fundamentals through React.js, shipping a series of deployed applications.',
+        'An intensive, project-driven internship - front-end fundamentals through React.js, shipping a series of deployed applications.',
       bullets: [
-        'Built responsive front-end projects with HTML5, CSS3 and JavaScript (ES6) — control statements, promises, and async/await — plus Bootstrap, React.js (components, state, props, Router) and Tailwind CSS.',
+        'Built responsive front-end projects with HTML5, CSS3 and JavaScript (ES6) - control statements, promises, and async/await - plus Bootstrap, React.js (components, state, props, Router) and Tailwind CSS.',
         'Delivered a series of applied projects deployed via GitHub Pages: a Netflix-style responsive clone, a Zomato-style landing page, a DOM-driven task-management app, and a capstone "Book My Show" React clone integrating the IMDB API and Razorpay.',
         'Gained hands-on experience calling REST APIs from React, with an introductory conceptual view into Node.js and MongoDB.',
         'Participated in weekly progress check-ins with trainers, strengthening structured, feedback-driven problem-solving.',
@@ -72,7 +72,7 @@ export class Experience {
       title: 'Junior Software Engineer',
       org: 'Netcracker Technology · B2B Order Capture UI',
       teaser:
-        'An enterprise order-management frontend for quote creation, catalog browsing, and multi-step checkout — built and shipped as part of a delivery team.',
+        'An enterprise order-management frontend for quote creation, catalog browsing, and multi-step checkout - built and shipped as part of a delivery team.',
       bullets: [
         'Contributed to a multi-session NgRx state architecture with persistence middleware, reducing session-recovery time to near-zero.',
         'Helped build a real-time WebSocket-based notification system using RxJS, enabling multiple users to collaborate on shared quotes concurrently without a manual refresh.',
@@ -89,7 +89,7 @@ export class Experience {
       title: 'Software Engineer',
       org: 'Netcracker Technology · B2B Self-Service Portal UI',
       teaser:
-        'A customer- and CSR-facing telecom eCommerce/eCare portal — catalog browsing, offer configuration, billing, and self-service quoting.',
+        'A customer- and CSR-facing telecom eCommerce/eCare portal - catalog browsing, offer configuration, billing, and self-service quoting.',
       bullets: [
         'Contributed to a modular Angular SPA with lazy-loaded routing split across public and private route trees with authentication-based route guarding.',
         'Contributed to a large, multi-domain NgRx global state architecture with cross-session persistence via meta-reducers, eliminating redundant API re-fetches.',
@@ -108,7 +108,7 @@ export class Experience {
       title: 'Building Garuda',
       org: 'Real-Time Indian Stock Market Analytics Platform',
       teaser:
-        'Architected, built, and operate a complete real-time analytics platform solo — frontend, backend, data pipeline, security, and infrastructure.',
+        'Architected, built, and operate a complete real-time analytics platform solo - frontend, backend, data pipeline, security, and infrastructure.',
       bullets: [],
       tags: ['Angular 21', 'Electron', 'Bun', 'Fastify', 'TimescaleDB'],
       dotColor: 'accent-blue',

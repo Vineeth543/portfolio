@@ -155,7 +155,7 @@ export class Home {
 
   constructor() {
     this.seo.setPageSeo({
-      title: 'Vineeth Serigar — From Binary Packets to Pixel-Perfect UI',
+      title: 'Vineeth Serigar - From Binary Packets to Pixel-Perfect UI',
       description:
         'Vineeth Serigar, software engineer. 4+ years building enterprise B2B UIs with Angular; solo-built Garuda, a real-time stock market analytics platform.',
       path: '/',

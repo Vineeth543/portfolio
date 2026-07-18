@@ -14,7 +14,7 @@
   /* Nav collapses to the hamburger menu at this width in the mockups */
   --breakpoint-nav: 1080px;
 
-  /* Semantic colors — values live in :root/.dark below so the theme toggle can swap them at runtime */
+  /* Semantic colors - values live in :root/.dark below so the theme toggle can swap them at runtime */
   --color-bg: var(--vs-bg);
   --color-bg-alt: var(--vs-bg-alt);
   --color-surface: var(--vs-surface);
@@ -29,7 +29,7 @@
   --color-nav: var(--vs-nav);
   --color-success: #33d17a;
 
-  /* "Featured" surfaces — the Garuda trading-terminal identity, shared by the
+  /* "Featured" surfaces - the Garuda trading-terminal identity, shared by the
      /garuda hero and the featured project cards on /home and /work */
   --color-featured-base: var(--vs-featured-base);
   --color-featured-grid: var(--vs-featured-grid);
@@ -39,7 +39,7 @@
   --color-featured-card-from: var(--vs-featured-card-from);
   --color-featured-card-to: var(--vs-featured-card-to);
 
-  /* Candlestick motif on the /garuda hero — TradingView convention: green up, red down */
+  /* Candlestick motif on the /garuda hero - TradingView convention: green up, red down */
   --color-candle-up: var(--vs-candle-up);
   --color-candle-down: var(--vs-candle-down);
 
@@ -118,7 +118,7 @@ body {
 /* Keyframes must live here, not in component stylesheets: Angular's emulated view
    encapsulation renames component-defined @keyframes (e.g. _ngcontent-x_gridDrift),
    which breaks animation-name references coming from Tailwind utilities and inline
-   style bindings — those always use the unscoped name. */
+   style bindings - those always use the unscoped name. */
 @keyframes gridDrift {
   from {
     background-position: 0 0;

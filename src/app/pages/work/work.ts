@@ -46,7 +46,7 @@ export class Work {
         'Contributed to a large multi-domain NgRx state architecture with cross-session persistence.',
       ],
       tags: ['Angular', 'TypeScript', 'NgRx', 'RxJS', 'Bootstrap', 'Playwright'],
-      note: 'Built by a team of engineers — described here at a level appropriate for public sharing.',
+      note: 'Built by a team of engineers - described here at a level appropriate for public sharing.',
       motif: 'grid',
     },
     {
@@ -55,14 +55,14 @@ export class Work {
       timeframe: 'Sep 2022 – Jul 2024',
       title: 'B2B Order Capture UI',
       overview:
-        'An enterprise order-management frontend for quote creation, catalog browsing, customer onboarding, and multi-step checkout — used by customers and CSR agents.',
+        'An enterprise order-management frontend for quote creation, catalog browsing, customer onboarding, and multi-step checkout - used by customers and CSR agents.',
       bullets: [
         'Contributed to a multi-session NgRx architecture, reducing session-recovery time to near-zero.',
         'Helped build a real-time WebSocket notification system enabling concurrent quote collaboration.',
         'Helped implement a micro-frontend shell for embedding within a parent portal.',
       ],
       tags: ['Angular', 'TypeScript', 'NgRx', 'RxJS', 'LESS', 'Playwright'],
-      note: 'Built by a team of engineers — described here at a level appropriate for public sharing.',
+      note: 'Built by a team of engineers - described here at a level appropriate for public sharing.',
       motif: 'flow',
     },
     {
@@ -71,7 +71,7 @@ export class Work {
       timeframe: 'Final Year · 2022',
       title: 'Citizen Centric Panchayat System',
       overview:
-        'A full-stack E-Panchayat e-governance platform letting rural citizens apply for certificates, submit complaints, pay taxes online, and track applications — with role-based dashboards for officials.',
+        'A full-stack E-Panchayat e-governance platform letting rural citizens apply for certificates, submit complaints, pay taxes online, and track applications - with role-based dashboards for officials.',
       bullets: [
         'Built a React front end with role-specific dashboards for Admin, PDO, Secretary, President, and Citizen roles.',
         'Contributed to Node/Express/MongoDB back-end integration, including Razorpay payments and AWS S3 document storage.',
@@ -88,7 +88,7 @@ export class Work {
       title: 'Portfolio',
       category: 'PERSONAL PROJECT',
       description:
-        'This site itself — an Angular app built with standalone components, signals, and zoneless change detection, styled with Tailwind CSS v4 and deployed on GitHub Pages under a custom domain with light/dark theming. The contact form runs on a separate Fastify + Resend serverless backend on Vercel; built solo, with AI coding tools — including Claude Code — as a genuine part of the workflow.',
+        'This site itself - an Angular app built with standalone components, signals, and zoneless change detection, styled with Tailwind CSS v4 and deployed on GitHub Pages under a custom domain with light/dark theming. The contact form runs on a separate Fastify + Resend serverless backend on Vercel; built solo, with AI coding tools - including Claude Code - as a genuine part of the workflow.',
       techStack: ['Angular', 'Tailwind CSS', 'Fastify', 'Resend', 'GitHub Pages'],
       screenshotPath: '/assets/portfolio.png',
       liveUrl: 'https://www.vineeth.software/',
@@ -120,7 +120,7 @@ export class Work {
       title: 'Task Manager',
       category: 'INTERNSHIP · JAVASCRIPT',
       description:
-        'An early project from the same DevTown internship, built specifically to learn DOM manipulation fundamentals. A task management app in plain HTML, CSS, and vanilla JavaScript — no framework.',
+        'An early project from the same DevTown internship, built specifically to learn DOM manipulation fundamentals. A task management app in plain HTML, CSS, and vanilla JavaScript - no framework.',
       techStack: ['HTML5', 'CSS3', 'JavaScript'],
       screenshotPath: '/assets/task-manager.png',
       liveUrl: 'https://vineeth543.github.io/dom-manipulation-project-task-manage/',
