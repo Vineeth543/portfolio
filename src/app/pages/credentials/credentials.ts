@@ -74,6 +74,23 @@ export class Credentials {
     },
   ];
 
+  protected readonly publications: Credential[] = [
+    {
+      key: 'ijraset-panchayat',
+      category: 'certificate',
+      title: 'Citizen Centric Panchayat System with Digital Management and Automation',
+      issuer:
+        'IJRASET · International Journal for Research in Applied Science & Engineering Technology',
+      date: 'July 2022',
+      imageSrc: '/assets/IJRASET45849.jpg',
+      imageAlt: 'IJRASET publication certificate for Citizen Centric Panchayat System',
+      meta: 'Vineeth Serigar · ISSN 2321-9653 · Vol. 10, Issue VII · Paper ID IJRASET45849',
+      linkUrl:
+        'https://www.ijraset.com/print-certificate/citizen-centric-panchayat-system-with-digital-management-and-automation',
+      linkLabel: 'View Publication →',
+    },
+  ];
+
   protected readonly awards: Credential[] = [
     {
       key: 'difference',

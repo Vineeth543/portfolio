@@ -9,8 +9,9 @@ export interface AdditionalProject {
   techStack: string[];
   screenshotPath: string;
   liveUrl?: string;
-  githubUrl: string;
+  githubUrl?: string;
   linkedInUrl?: string;
+  certificateUrl?: string;
 }
 
 @Component({

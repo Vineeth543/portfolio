@@ -44,13 +44,24 @@
           >Live Demo <span aria-hidden="true">↗</span></a
         >
       }
-      <a
-        [href]="project().githubUrl"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-1.5 font-sans text-[13px] font-bold text-text no-underline transition-[gap,color] duration-250 ease-in-out hover:gap-2.5 hover:text-accent-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
-        >GitHub <span aria-hidden="true">↗</span></a
-      >
+      @if (project().githubUrl) {
+        <a
+          [href]="project().githubUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 font-sans text-[13px] font-bold text-text no-underline transition-[gap,color] duration-250 ease-in-out hover:gap-2.5 hover:text-accent-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+          >GitHub <span aria-hidden="true">↗</span></a
+        >
+      }
+      @if (project().certificateUrl) {
+        <a
+          [href]="project().certificateUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 font-sans text-[13px] font-bold text-accent-blue no-underline transition-[gap] duration-250 ease-in-out hover:gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+          >View Publication Certificate <span aria-hidden="true">↗</span></a
+        >
+      }
       @if (project().linkedInUrl) {
         <a
           [href]="project().linkedInUrl"

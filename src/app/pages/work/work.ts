@@ -128,6 +128,15 @@ export class Work {
       linkedInUrl:
         'https://www.linkedin.com/posts/vineeth-serigar_task2-activity-6824778699792011264-KG3v/',
     },
+    {
+      title: 'Citizen Centric Panchayat System',
+      category: 'ACADEMIC CAPSTONE · PUBLISHED RESEARCH',
+      description:
+        'A citizen-facing and admin portal for a village panchayat - online tax payment, certificate and license applications, complaints and suggestions, event notifications, and e-tender listings, with separate roles for citizens and officials. Grew out of my BE final-year capstone and was later independently peer-reviewed and published in IJRASET (Paper ID IJRASET45849, Vol. 10, Issue VII, July 2022).',
+      techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Razorpay', 'AWS S3', 'Tailwind CSS'],
+      screenshotPath: '/assets/IJRASET45849.jpg',
+      certificateUrl: '/assets/IJRASET45849.jpg',
+    },
   ];
 
   protected readonly garudaVisible = signal(false);
